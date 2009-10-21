@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE compendium SYSTEM "report.dtd">
+<compendium>
+    <article>
+        <date>Jovis, 3 die Martii, 1836</date>
+        <resolution>Committees on Private Bills,&#x2014;Motion made, and Question
+            proposed,&#x2014;<quote>That every Private Bill, hereafter committed by the House to a
+            Committee, shall be committed to a Select Committee of fifteen Members, drawn by ballot
+            from the list or lists prepared, under the direction of Mr. Speaker, and to which the
+            Bill would, by the Standing Orders and Rules of the House, have been
+            submitted.</quote>&#x2014;Question put:&#x2014;The House <emphasis type="italic"
+                >divided:</emphasis></resolution>
+        <divisionlist>
+            <sec content="yes">
+                <title>AYES:</title>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>Aglioinby</surname>
+                        </personname>
+                    </person>
+                </member>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>Bowring</surname>
+                        </personname>
+                    </person>
+                </member>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>Bridgeman</surname>
+                        </personname>
+                    </person>
+                </member>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>Crawford</surname>
+                            <firstname>W.S.</firstname>
+                        </personname>
+                        <affiliation>(Dundalk)</affiliation>
+                    </person>
+                </member>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>Elphinstone</surname>
+                        </personname>
+                    </person>
+                </member>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>Marsland</surname>
+                            <firstname>Henry</firstname>
+                        </personname>
+                    </person>
+                </member>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>Mullins</surname>
+                        </personname>
+                    </person>
+                </member>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>O'Connell</surname>
+                            <firstname>D</firstname>
+                        </personname>
+                        <affiliation>(Dublin)</affiliation>
+                    </person>
+                </member>
+                <para>Tellers for the Ayes, Mr. Hume and Mr. Roebuck.</para>
+            </sec>
+            <sec content="no">
+                <title>NOES:</title>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>Aguew</surname>
+                            <firstname>Sir Andrew</firstname>
+                        </personname>
+                    </person>
+                </member>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>Baillie</surname>
+                            <firstname>H.D.</firstname>
+                        </personname>
+                        <affiliation>Honiton</affiliation>
+                    </person>
+                </member>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>Barnard</surname>
+                        </personname>
+                    </person>
+                </member>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>Barneby</surname>
+                        </personname>
+                    </person>
+                </member>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>Bewes</surname>
+                        </personname>
+                    </person>
+                </member>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>Bolling</surname>
+                        </personname>
+                    </person>
+                </member>
+                <member>
+                    <person>
+                        <personname>
+                            <surname>Brockclehurst</surname>
+                        </personname>
+                    </person>
+                </member>
+                <para>Tellers for the Noes, Mr. E. J. Stanley and Sir Andrew Leith Hay.</para>
+            </sec>
+        </divisionlist>
+    </article>
+</compendium>
