@@ -1,0 +1,7 @@
+An example of marking up division lists.
+
+report.xml - the original provided demo file
+
+example.html - an example of the same content in HTML 5
+
+default.css - CSS file to make example.html a bit cleaner
