@@ -2,12 +2,10 @@ require 'rubygems'
 require 'nokogiri'
 require 'json'
 
-html_files = Dir.glob('./data/*.html')
-
-html_files.each do |html_file|
-  doc = Nokogiri::HTML(open(html_file))
+Dir.glob('./data/*.html').each do |html_file|
+  nokogiri_doc = Nokogiri::HTML(open(html_file))
     
-    doc.xpath('//div[@class="division-list"]').each do |division_list|
+    nokogiri_doc.xpath('//div[@class="division-list"]').each do |division_list|
       division_hash = {}
       
       division_hash["page"] = division_list.xpath('p[@class="page"]').text
