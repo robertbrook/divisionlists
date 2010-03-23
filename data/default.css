@@ -5,3 +5,5 @@ p.date:before {content:'Date ';font-weight:bold;}
 p.resolution:before {content:'Resolution ';font-weight:bold;}
 ol.ayes:before {content:'Ayes ';font-weight:bold;}
 ol.noes:before {content:'Noes ';font-weight:bold;}
+p.page:before { content: "Page: " }
+p.divnum:before { content: "Division Number: " }

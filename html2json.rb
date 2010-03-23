@@ -35,7 +35,7 @@ html_files.each do |html_file|
         division_hash["noes_tellers"] =  division_list.xpath('ol[@class="noes"]').first.next_sibling().text
       end
       
-      p division_hash.to_json
+      File.open("./output/"+division_hash["number"].gsub(/\s|\./, '') + ".js", 'w') {|f| f.write(division_hash.to_json) }
       
     end
     
