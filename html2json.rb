@@ -15,17 +15,21 @@ html_files.each do |html_file|
       division_hash["number"] = division_list.xpath('p[@class="divnum"]').text
       division_hash["resolution"] = division_list.xpath('p[@class="resolution"]').text
             
+      ayes_array = []
       division_list.xpath('ol[@class="ayes"]/li').each do |aye|
-        # p "Aye: " + aye.text.strip
+        ayes_array << aye.text.strip
       end
+      division_hash["ayes"] = ayes_array
             
       if division_list.xpath('ol[@class="ayes"]').first
         division_hash["ayes_tellers"] =  division_list.xpath('ol[@class="ayes"]').first.next_sibling().text
       end
       
+      noes_array = []
       division_list.xpath('ol[@class="noes"]/li').each do |noe|
-        # p "Noe: " + noe.text.strip
+        noes_array << noe.text.strip
       end
+      division_hash["noes"] = noes_array
       
       if division_list.xpath('ol[@class="noes"]').first
         division_hash["noes_tellers"] =  division_list.xpath('ol[@class="noes"]').first.next_sibling().text
