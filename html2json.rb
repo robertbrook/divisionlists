@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'nokogiri'
+require 'json'
 
 html_files = Dir.glob('./data/*.html')
 
@@ -15,7 +16,7 @@ html_files.each do |html_file|
       division_hash["resolution"] = division_list.xpath('p[@class="resolution"]').text
             
       division_list.xpath('ol[@class="ayes"]/li').each do |aye|
-        p "Aye: " + aye.text.strip
+        # p "Aye: " + aye.text.strip
       end
             
       if division_list.xpath('ol[@class="ayes"]').first
@@ -23,14 +24,14 @@ html_files.each do |html_file|
       end
       
       division_list.xpath('ol[@class="noes"]/li').each do |noe|
-        p "Noe: " + noe.text.strip
+        # p "Noe: " + noe.text.strip
       end
       
       if division_list.xpath('ol[@class="noes"]').first
         division_hash["noes_tellers"] =  division_list.xpath('ol[@class="noes"]').first.next_sibling().text
       end
       
-      p division_hash
+      p division_hash.to_json
       
     end
     
