@@ -19,8 +19,9 @@ Dir.glob('./data/*.html').each do |html_file|
       end
       division_hash["ayes"] = ayes_array
             
-      if division_list.xpath('ol[@class="ayes"]').first
-        division_hash["ayes_tellers"] =  division_list.xpath('ol[@class="ayes"]').first.next_sibling().text
+      ayes_first = division_list.xpath('ol[@class="ayes"]').first
+      if ayes_first
+        division_hash["ayes_tellers"] = ayes_first.next_sibling().text
       end
       
       noes_array = []
@@ -29,11 +30,12 @@ Dir.glob('./data/*.html').each do |html_file|
       end
       division_hash["noes"] = noes_array
       
-      if division_list.xpath('ol[@class="noes"]').first
-        division_hash["noes_tellers"] =  division_list.xpath('ol[@class="noes"]').first.next_sibling().text
+      noes_first = division_list.xpath('ol[@class="noes"]').first
+      if noes_first
+        division_hash["noes_tellers"] =  noes_first.next_sibling().text
       end
       
-      File.open("./output/"+division_hash["number"].gsub(/\s|\.|,/, '') + ".js", 'w') {|f| f.write(division_hash.to_json) }
+      File.open("./output/"+division_hash["number"].gsub(/\s|\.|,|Numb/, '') + ".js", 'w') {|f| f.write(division_hash.to_json) }
       
     end
     
