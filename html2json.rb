@@ -13,13 +13,14 @@ html_files.each do |html_file|
       p "Date: " + division_list.xpath('p[@class="date"]').text
       p "Number: " + division_list.xpath('p[@class="divnum"]').text
       p "Resolution: " + division_list.xpath('p[@class="resolution"]').text
-      
-      
+            
       division_list.xpath('ol[@class="ayes"]/li').each do |aye|
         p "Aye: " + aye.text.strip
       end
       
-      if division_list.xpath('ol[@class="ayes"]')
+      # p division_list.xpath('ol[@class="ayes"]/li').length
+      
+      if division_list.xpath('ol[@class="ayes"]').first
         p "(Ayes Tellers) " + division_list.xpath('ol[@class="ayes"]').first.next_sibling().text
       end
       
@@ -27,7 +28,7 @@ html_files.each do |html_file|
         p "Noe: " + noe.text.strip
       end
       
-      if division_list.xpath('ol[@class="noes"]')
+      if division_list.xpath('ol[@class="noes"]').first
         p "(Noes Tellers) " + division_list.xpath('ol[@class="noes"]').first.next_sibling().text
       end
       
