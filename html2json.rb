@@ -1,16 +1,24 @@
 require 'rubygems'
 require 'nokogiri'
 require 'json'
-require './couch.rb'
+require 'rest_client'
 
+<<<<<<< HEAD
 server = Couch::Server.new("173.203.199.38", "5984")
 database = "divisionlists"
+=======
+DBSERVER = "http://localhost:5984"
+DATABASE = "#{DBSERVER}/divisionlists"
+>>>>>>> 1b43bc56606264986b1f295d2435a5dadc535cef
 
 Dir.glob('./data/*.html').each do |html_file|
   nokogiri_doc = Nokogiri::HTML(open(html_file))
     
     nokogiri_doc.xpath('//div[@class="division-list"]').each do |division_list|
       division_hash = {}
+      
+      filename = html_file.split("/").last
+      division_hash["file"] = filename
       
       division_hash["page"] = division_list.xpath('p[@class="page"]').text
       division_hash["date"] = division_list.xpath('p[@class="date"]').text
@@ -40,7 +48,7 @@ Dir.glob('./data/*.html').each do |html_file|
       end
       
       #get the database to generate a valid UUID
-      result = server.get("/_uuids")
+      result = RestClient.get("#{DBSERVER}/_uuids")
       values = JSON.parse(result.body)
       uuid = values["uuids"].first
       
@@ -50,7 +58,7 @@ Dir.glob('./data/*.html').each do |html_file|
       JSON
       
       #PUT the new record to the database
-      server.put("/#{database}/#{uuid}", doc)
+      RestClient.put("#{DATABASE}/#{uuid}", doc)
       #optionally could check the result is 201 Created...
     end
     
