@@ -3,13 +3,8 @@ require 'nokogiri'
 require 'json'
 require 'rest_client'
 
-<<<<<<< HEAD
-server = Couch::Server.new("173.203.199.38", "5984")
-database = "divisionlists"
-=======
 DBSERVER = "http://localhost:5984"
 DATABASE = "#{DBSERVER}/divisionlists"
->>>>>>> 1b43bc56606264986b1f295d2435a5dadc535cef
 
 Dir.glob('./data/*.html').each do |html_file|
   nokogiri_doc = Nokogiri::HTML(open(html_file))
