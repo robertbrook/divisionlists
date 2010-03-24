@@ -1,6 +1,10 @@
 require 'rubygems'
 require 'nokogiri'
 require 'json'
+require './couch.rb'
+
+server = Couch::Server.new("localhost", "5984")
+database = "divisionlists"
 
 Dir.glob('./data/*.html').each do |html_file|
   nokogiri_doc = Nokogiri::HTML(open(html_file))
@@ -34,9 +38,20 @@ Dir.glob('./data/*.html').each do |html_file|
       if noes_first
         division_hash["noes_tellers"] =  noes_first.next_sibling().text
       end
-            
-      File.open("./output/"+division_hash["number"].gsub(/\s|\.|,|Numb/, '') + ".js", 'w') {|f| f.write(JSON.generate(division_hash)) }
       
+      #get the database to generate a valid UUID
+      result = server.get("/_uuids")
+      values = JSON.parse(result.body)
+      uuid = values["uuids"].first
+      
+      #convert the hash into a valid JSON doc
+      doc = <<-JSON
+      #{JSON.generate(division_hash)}
+      JSON
+      
+      #PUT the new record to the database
+      server.put("/#{database}/#{uuid}", doc)
+      #optionally could check the result is 201 Created...
     end
     
 end
