@@ -12,6 +12,9 @@ Dir.glob('./data/*.html').each do |html_file|
     nokogiri_doc.xpath('//div[@class="division-list"]').each do |division_list|
       division_hash = {}
       
+      filename = html_file.split("/").last
+      division_hash["file"] = filename
+      
       division_hash["page"] = division_list.xpath('p[@class="page"]').text
       division_hash["date"] = division_list.xpath('p[@class="date"]').text
       division_hash["number"] = division_list.xpath('p[@class="divnum"]').text
