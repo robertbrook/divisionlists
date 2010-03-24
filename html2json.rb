@@ -34,8 +34,8 @@ Dir.glob('./data/*.html').each do |html_file|
       if noes_first
         division_hash["noes_tellers"] =  noes_first.next_sibling().text
       end
-      
-      File.open("./output/"+division_hash["number"].gsub(/\s|\.|,|Numb/, '') + ".js", 'w') {|f| f.write(division_hash.to_json) }
+            
+      File.open("./output/"+division_hash["number"].gsub(/\s|\.|,|Numb/, '') + ".js", 'w') {|f| f.write(JSON.generate(division_hash)) }
       
     end
     
