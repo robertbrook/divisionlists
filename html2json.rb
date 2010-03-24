@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'json'
 require './couch.rb'
 
-server = Couch::Server.new("localhost", "5984")
+server = Couch::Server.new("173.203.199.38", "5984")
 database = "divisionlists"
 
 Dir.glob('./data/*.html').each do |html_file|
