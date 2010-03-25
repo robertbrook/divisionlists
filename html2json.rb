@@ -21,6 +21,35 @@ def log_error current_file, ref, item_name, item
   write_to_log(message)  
 end
 
+def get_month_num month_name
+  case month_name.downcase
+    when "january", "ianuarius"
+      "01"
+    when "february", "februarius"
+      "02"
+    when "march", "martii", "martius"
+      "03"
+    when "april", "aprilis"
+      "04"
+    when "may", "maius"
+      "05"
+    when "june", "iunius"
+      "06"
+    when "july", "julius"
+      "07"
+    when "august", "sextilis"
+      "08"
+    when "september"
+      "09"
+    when "october"
+      "10"
+    when "november"
+      "11"
+    when "december"
+      "12"
+  end
+end
+
 def load_divisions_list html_file
   nokogiri_doc = Nokogiri::HTML(open(html_file))
   
@@ -97,6 +126,19 @@ def load_divisions_list html_file
     unless error_occured
       division_hash["page"] = page.text
       division_hash["date"] = date.text
+      
+      date_parts = date.text.split(", ")
+      
+      year = date_parts.pop.gsub(".", "").strip
+      
+      month_day = date_parts.pop.split(" ")
+      month = month_day.pop
+      month = get_month_num(month)
+      
+      day = month_day.last.match(/\d+/).to_s
+
+      division_hash["numeric_date"] = [year, month, day]
+      
       division_hash["number"] = number.text
       division_hash["resolution"] = resolution.text
       
