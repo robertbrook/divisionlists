@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <division>
   <number><%= @division["number"] %></number>
-  <resolution><%= @division["resolution"] %></resolution>
   <date><%= @division["date"] %></date>
-  <ayes><%= @division["ayes"] %></ayes>
-  <noes><%= @division["noes"] %></noes>
-  <page><%= @division["page"] %></page>
-  <ayes_tellers><%= @division["ayes_tellers"] %></ayes_tellers>
-  <noes_tellers><%= @division["noes_tellers"] %></noes_tellers>
   <file><%= @division["file"] %></file>
+  <page><%= @division["page"] %></page>
+  <resolution><%= @division["resolution"] %></resolution>
+  <ayes><% @division["ayes"].each do |member|%>
+    <member><%= member %></member><%end%>
+  </ayes>
+  <ayes_tellers><%= @division["ayes_tellers"] %></ayes_tellers>
+  <noes><% @division["noes"].each do |member|%>
+    <member><%= member %></member><%end%>
+  </noes>
+  <noes_tellers><%= @division["noes_tellers"] %></noes_tellers>
   <debug><%= @division.inspect %></debug>
 </division>
