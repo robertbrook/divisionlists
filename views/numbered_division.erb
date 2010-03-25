@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <division>
-  <h1><%= @division["number"] %></h1>
-  <blockquote><%= @division["resolution"] %></blockquote>
-  <pre> <%= @division.inspect %></pre>
+  <number><%= @division["number"] %></number>
+  <resolution><%= @division["resolution"] %></resolution>
+  <date><%= @division["date"] %></date>
+  <ayes><%= @division["ayes"].inspect %></ayes>
+  <noes><%= @division["noes"].inspect %></noes>
+  <page><%= @division["page"] %></page>
+  <ayes_tellers><%= @division["ayes_tellers"] %></ayes_tellers>
+  <noes_tellers><%= @division["noes_tellers"] %></noes_tellers>
+  <file><%= @division["file"] %></file>
+  <debug><%= @division.inspect %></debug>
 </division>
