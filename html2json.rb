@@ -101,7 +101,7 @@ def load_divisions_list html_file
       division_hash["resolution"] = resolution.text
       
       ayes_array = []
-      ayes.xpath('/li').each do |aye|
+      ayes.xpath('./li').each do |aye|
         ayes_array << aye.text.strip
       end
       division_hash["ayes"] = ayes_array
@@ -112,7 +112,7 @@ def load_divisions_list html_file
       end
 
       noes_array = []
-      noes.xpath('/li').each do |noe|
+      noes.xpath('./li').each do |noe|
         noes_array << noe.text.strip
       end
       division_hash["noes"] = noes_array
