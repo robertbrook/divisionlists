@@ -64,6 +64,13 @@ def load_divisions_list html_file
     unless number.count == 1
       log_error current_file, error_ref, "number", number
       error_occured = true
+    else
+      divnum = number.text.gsub("Numb", "").gsub(".", "").gsub(",", "").strip
+      unless divnum =~ /^\d+$/
+        message = "error in file #{current_file}#{error_ref} - division number #{divnum} may be invalid\n"
+        write_to_log message
+        error_occured = true
+      end
     end
     
     unless ayes.count == 1
