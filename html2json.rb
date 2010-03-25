@@ -86,6 +86,12 @@ def load_divisions_list html_file
     unless resolution.count == 1
       log_error current_file, error_ref, "resolution", resolution
       error_occured = true
+    else
+      if resolution.text.include?("???")
+        message = "error in file #{current_file}#{error_ref} - resolution text contains invalid characters\n"
+        write_to_log message
+        error_occured = true
+      end
     end
     
     unless error_occured
