@@ -4,6 +4,7 @@
   <date><%= @division["date"] %></date>
   <file><%= @division["file"] %></file>
   <page><%= @division["page"] %></page>
+  <archive_link><%= @archive_link %></archive_link>
   <resolution><%= @division["resolution"] %></resolution>
   <ayes><% @division["ayes"].each do |member|%>
     <member><%= member.gsub("???", '<span class="illegible">???</span>') %></member><%end%>
@@ -13,5 +14,5 @@
     <member><%= member.gsub("???", '<span class="illegible">???</span>') %></member><%end%>
   </noes>
   <noes_tellers><%= @division["noes_tellers"] %></noes_tellers>
-  <debug><%= @division.inspect %></debug>
+  <!-- <debug><%= @division.inspect %></debug> -->
 </division>
