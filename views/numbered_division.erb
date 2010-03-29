@@ -6,11 +6,11 @@
   <page><%= @division["page"] %></page>
   <resolution><%= @division["resolution"] %></resolution>
   <ayes><% @division["ayes"].each do |member|%>
-    <member><%= member %></member><%end%>
+    <member><%= member.gsub("???", '<span class="illegible">???</span>') %></member><%end%>
   </ayes>
   <ayes_tellers><%= @division["ayes_tellers"] %></ayes_tellers>
   <noes><% @division["noes"].each do |member|%>
-    <member><%= member %></member><%end%>
+    <member><%= member.gsub("???", '<span class="illegible">???</span>') %></member><%end%>
   </noes>
   <noes_tellers><%= @division["noes_tellers"] %></noes_tellers>
   <debug><%= @division.inspect %></debug>
