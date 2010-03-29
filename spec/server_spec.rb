@@ -7,8 +7,10 @@ describe "My App" do
     @app ||= Sinatra::Application
   end
 
-  it "should respond to /" do
-    get '/'
-    last_response.should be_ok
-  end
+  # it "should respond to '/divisions/number/171.xml'" do
+  #     get '/divisions/number/171.xml'
+  #     last_response.should be_ok
+  #   end
+  
+  
 end
