@@ -22,7 +22,7 @@ describe "The Parser" do
     end
   
     it "should return a forename of 'William'" do
-      @sir_william_arrol.forename.should == "William"  
+      @sir_william_arrol.forename.should == "William"
     end
   
     it "should return a surname of 'Arrol'" do
@@ -31,8 +31,7 @@ describe "The Parser" do
     
     it "should return a title of 'Sir'" do
       @sir_william_arrol.title.should == "Sir"  
-    end
-  
+    end  
   end
   
   describe "given VoteName 'Atkinson, Rt. Hon. John'" do
@@ -48,47 +47,53 @@ describe "The Parser" do
       @rt_hon_john_atkinson.surname.should == "Atkinson"  
     end
     
-    it "should not return a title"
+    it "should not return a title" do
+      @rt_hon_john_atkinson.title.should == ""
+    end
   end
   
-  describe "given VoteName 'Balfour, Rt. Hon. A.J. (Manch'r'" do
-      
+  describe "given VoteName 'Balfour, Rt. Hon. A.J. (Manch'r'" do      
     before do    
       @rt_hon_aj_balfour_manchester = VoteName.new("Balfour, Rt. Hon. A.J. (Manch'r")
     end
   
-    it "should not return a forename"
+    it "should return a forename of 'A.J.'" do
+      @rt_hon_aj_balfour_manchester.forename.should == "A.J."
+    end
   
     it "should return a surname of 'Balfour'" do
       @rt_hon_aj_balfour_manchester.surname.should == "Balfour"  
     end
     
-    it "should not return a title"
+    it "should not return a title" do
+      @rt_hon_aj_balfour_manchester.title.should == ""
+    end
     
     it "should return a constituency of 'Manchester'" do
       @rt_hon_aj_balfour_manchester.constituency.should == "Manchester"  
-    end
-  
+    end  
   end
   
   describe "given VoteName 'Balfour, Gerald William (Leeds)'" do
-      
     before do    
       @gerald_william_balfour_leeds = VoteName.new("Balfour, Gerald William (Leeds)")
     end
   
-    it "should not return a forename"
+    it "should return a forename of 'Gerald William'" do
+      @gerald_william_balfour_leeds.forename.should == "Gerald William"
+    end
   
     it "should return a surname of 'Balfour'" do
       @gerald_william_balfour_leeds.surname.should == "Balfour"  
     end
     
-    it "should not return a title"
+    it "should not return a title" do
+      @gerald_william_balfour_leeds.title.should == ""
+    end
     
     it "should return a constituency of 'Leeds'" do
       @gerald_william_balfour_leeds.constituency.should == "Leeds"  
-    end
-  
+    end  
   end
   
 end
