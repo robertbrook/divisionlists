@@ -16,4 +16,9 @@ describe 'The HelloWorld App' do
     last_response.should be_ok
     last_response.body.should == 'Hello World'
   end
+  
+  # it "duz stuff" do
+  #   get "/divisions/number/103.xml"
+  #   last_response.should be_ok
+  # end
 end
