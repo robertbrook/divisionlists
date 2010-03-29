@@ -2,11 +2,19 @@ class VoteName
   @@forename = ''
   @@surname = ''
   @@title = ''
+  @@constituency = ''
   
   def initialize(input_string)
     parts = input_string.split(",")
-    @@forename = parts[1].strip
+    
     @@surname = parts[0].strip
+    forename_title = parts[1].split(" ")
+    if forename_title.length > 1
+      @@forename = forename_title.pop
+      @@title = forename_title.join(" ").strip
+    else
+      @@forename = forename_title[0].strip
+    end
   end
   
   def forename
@@ -19,6 +27,10 @@ class VoteName
   
   def title
     @@title
+  end
+  
+  def constituency
+    @@constituency
   end
 end
 
