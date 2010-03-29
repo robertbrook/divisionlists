@@ -7,15 +7,17 @@ class VoteName
   def initialize(input_string)
     @@constituency = get_constituency(input_string)
     
-    parts = input_string.split(",")
+    parts = input_string.split(",").reverse
+    @@surname = parts.pop.strip
     
-    @@surname = parts[0].strip
-    forename_title = parts[1].split(" ")
-    if forename_title.length > 1
-      @@forename = forename_title.pop
-      @@title = forename_title.join(" ").strip
+    input_string = parts.reverse.join(",")
+    
+    parts = input_string.split(" ")
+    if parts.length > 1
+      @@forename = parts.pop
+      @@title = parts.join(" ").strip
     else
-      @@forename = forename_title[0].strip
+      @@forename = parts[0].strip
     end
   end
   
