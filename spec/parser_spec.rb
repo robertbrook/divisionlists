@@ -57,6 +57,26 @@ describe "The Parser" do
   
   end
   
+  describe "given VoteName 'Balfour, Rt. Hon. A.J. (Manch'r'" do
+      
+    before do    
+      @rt_hon_aj_balfour_manchester = VoteName.new("Balfour, Rt. Hon. A.J. (Manch'r")
+    end
+  
+    it "should not return a forename"
+  
+    it "should return a surname of 'Balfour'" do
+      @rt_hon_aj_balfour_manchester.surname.should == "Balfour"  
+    end
+    
+    it "should not return a title"
+    
+    it "should return a constituency of 'Manchester'" do
+      @rt_hon_aj_balfour_manchester.constituency.should == "Manchester"  
+    end
+  
+  end
+  
 end
 
 
