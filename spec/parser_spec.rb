@@ -1,7 +1,6 @@
 require 'parser'
 
 describe "The Parser" do
-  
   describe "given VoteName 'Aird, John'" do
       
     before do    
@@ -15,7 +14,6 @@ describe "The Parser" do
     it "should return a surname of 'Aird' from a vote name of 'Aird, John'" do
       @vote_name.surname.should == "Aird"  
     end
-  
   end
 
   
@@ -25,14 +23,13 @@ describe "The Parser" do
       @vote_name = VoteName.new("Arrol, Sir William")
     end
   
-    it "should return a forename of 'John' from a vote name of 'Aird, John'" do
-      @vote_name.forename.should == "John"  
+    it "should return a forename of 'William' from a vote name of 'Arrol, Sir William'" do
+      @vote_name.forename.should == "William"  
     end
   
-    it "should return a surname of 'Aird' from a vote name of 'Aird, John'" do
-      @vote_name.surname.should == "Aird"  
+    it "should return a surname of 'Arrol' from a vote name of 'Arrol, Sir William'" do
+      @vote_name.surname.should == "Arrol"  
     end
-  
   end
   
 end
