@@ -1,6 +1,6 @@
-require 'parser'
+require 'vote_name'
 
-describe "The Parser" do
+describe "The VoteName Parser" do
   describe "given VoteName 'Aird, John'" do
     before do    
       @john_aird = VoteName.new("Aird, John")
