@@ -7,9 +7,10 @@ DBSERVER = "http://localhost:5984"
 DATABASE = "#{DBSERVER}/divisionlists"
 
 def get_uuid
-  result = RestClient.get("#{DBSERVER}/_uuids")
-  values = JSON.parse(result.body)
-  values["uuids"].first
+  # result = RestClient.get("#{DBSERVER}/_uuids")
+  # values = JSON.parse(result.body)
+  # values["uuids"].first
+  `uuidgen`.strip
 end
 
 def write_to_log message
@@ -179,7 +180,7 @@ end
 
 def load_data
   write_to_log("#{Time.now}\n")
-  Dir.glob('./data/*.html').each do |html_file|
+  Dir.glob('./../data/*.html').each do |html_file|
     load_divisions_list(html_file)
   end
   write_to_log("\n")
