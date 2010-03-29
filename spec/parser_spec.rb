@@ -1,9 +1,7 @@
 require 'parser'
 
 describe "The Parser" do
-  
   describe "given VoteName 'Aird, John'" do
-      
     before do    
       @john_aird = VoteName.new("Aird, John")
     end
@@ -15,12 +13,10 @@ describe "The Parser" do
     it "should return a surname of 'Aird'" do
       @john_aird.surname.should == "Aird"  
     end
-  
   end
 
   
   describe "given VoteName 'Arrol, Sir William'" do
-      
     before do    
       @sir_william_arrol = VoteName.new("Arrol, Sir William")
     end
@@ -40,7 +36,6 @@ describe "The Parser" do
   end
   
   describe "given VoteName 'Atkinson, Rt. Hon. John'" do
-      
     before do    
       @rt_hon_john_atkinson = VoteName.new("Atkinson, Rt. Hon. John")
     end
@@ -54,7 +49,6 @@ describe "The Parser" do
     end
     
     it "should not return a title"
-  
   end
   
   describe "given VoteName 'Balfour, Rt. Hon. A.J. (Manch'r'" do
