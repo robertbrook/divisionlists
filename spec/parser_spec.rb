@@ -77,6 +77,26 @@ describe "The Parser" do
   
   end
   
+  describe "given VoteName 'Balfour, Gerald William (Leeds)'" do
+      
+    before do    
+      @gerald_william_balfour_leeds = VoteName.new("Balfour, Gerald William (Leeds)")
+    end
+  
+    it "should not return a forename"
+  
+    it "should return a surname of 'Balfour'" do
+      @gerald_william_balfour_leeds.surname.should == "Balfour"  
+    end
+    
+    it "should not return a title"
+    
+    it "should return a constituency of 'Leeds'" do
+      @gerald_william_balfour_leeds.constituency.should == "Leeds"  
+    end
+  
+  end
+  
 end
 
 
