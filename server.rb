@@ -13,7 +13,7 @@ get '/divisions/number/:numberkey.xml' do
   @division = result["rows"].first["value"]
   
   date = Date.new(@division["numeric_date"][0].to_i, @division["numeric_date"][1].to_i, @division["numeric_date"][2].to_i)
-  hansard_date = date.strftime('%Y/%b/%d').downcase.gsub("/0", "/")
+  hansard_date = date.strftime('%Y/%b/%d').downcase
   @archive_link = "http://hansard.millbanksystems.com/sittings/#{hansard_date}"
   
   content_type 'text/xml', :charset => 'utf-8'
