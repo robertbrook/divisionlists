@@ -74,9 +74,22 @@ class VoteName
       title = ""
       
       case input_string
-        when /(Sir)/, /(Lieut\.-Col\.)/, /(Lieut\.-General)/, /(Lord)/, /(Viscount)/, /(Colonel)/, 
-          /(Commander)/, /(Major)/, /(Earl(?: of*))/, /(Lt\.-Col\.)/, /(Col\.)/, /(Captain)/, /(Dr\.)/,
-          /(Capt\.)/
+        when /(Lieut\.-Col\.)/, /(Lt\.-Col\.)/
+          title = "Lieutenant Colonel"
+          input_string.gsub!($1, "")
+        when /(Lieut\.-General)/
+          title = "Lieutenant General"
+          input_string.gsub!($1, "")
+        when /(Colonel)/, /(Col\.)/
+          title = "Colonel"
+          input_string.gsub!($1, "")
+        when /(Captain)/, /(Capt\.)/
+          title = "Captain"
+          input_string.gsub!($1, "")
+        when /(Dr\.)/, /(Doctor)/
+          title = "Doctor"
+          input_string.gsub!($1, "")
+        when /(Sir)/, /(Lord)/, /(Viscount)/, /(Commander)/, /(Major)/, /(Earl(?: of*))/
           title = $1
           input_string.gsub!($1, "")
       end
