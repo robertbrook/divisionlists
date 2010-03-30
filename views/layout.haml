@@ -2,7 +2,13 @@
   %head
     %title Division Lists
   %body
-    %div HEADER
-    = yield
-    %div FOOTER
+    %ul#header
+      %li link to index page
+      %li something
+    #content
+      = yield
+    %ul#footer
+      %li link to disclaimer
+      %li link to parly copyright
+      
     
