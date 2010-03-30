@@ -120,7 +120,7 @@ describe "The VoteName Parser" do
   
   describe "given VoteName 'Wilson-Todd, Wm. H. (Yorks.'" do
     before do    
-      @wilson_todd_wm_h_yorks = VoteName.new("Balfour, Gerald William (Leeds)")
+      @wilson_todd_wm_h_yorks = VoteName.new("Wilson-Todd, Wm. H. (Yorks.")
     end
   
     it "should return a forename of 'William H.'" do
