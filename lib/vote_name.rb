@@ -140,6 +140,7 @@ class VoteName
       name.gsub!("Geo.", "George")
       name.gsub!("Edw.", "Edward")
       name.gsub!("Thos.", "Thomas")
+      name.gsub!("Chas.", "Charles")
       name
     end
 end
