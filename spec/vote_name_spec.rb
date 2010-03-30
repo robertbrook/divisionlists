@@ -47,8 +47,8 @@ describe "The VoteName Parser" do
       @rt_hon_john_atkinson.surname.should == "Atkinson"  
     end
     
-    it "should not return a title" do
-      @rt_hon_john_atkinson.title.should == ""
+    it "should return a title of 'Rt. Hon.'" do
+      @rt_hon_john_atkinson.title.should == "Rt. Hon."
     end
   end
   
@@ -65,8 +65,8 @@ describe "The VoteName Parser" do
       @rt_hon_aj_balfour_manchester.surname.should == "Balfour"  
     end
     
-    it "should not return a title" do
-      @rt_hon_aj_balfour_manchester.title.should == ""
+    it "should return a title of 'Rt. Hon." do
+      @rt_hon_aj_balfour_manchester.title.should == "Rt. Hon."
     end
     
     it "should return a constituency of 'Manchester'" do
