@@ -57,7 +57,8 @@ class VoteName
       parts = input_string.split(" ")
 
       last_piece = parts.pop
-      if last_piece.strip =~ /\-$/
+      last_piece.strip! if last_piece
+      if last_piece =~ /\-$/
         surname = "#{last_piece}#{surname}"
       else
         parts << last_piece
@@ -124,6 +125,7 @@ class VoteName
       name.gsub!("Wm.", "William")
       name.gsub!("Geo.", "George")
       name.gsub!("Edw.", "Edward")
+      name.gsub!("Thos.", "Thomas")
       name
     end
 end
