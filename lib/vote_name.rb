@@ -87,8 +87,11 @@ class VoteName
       title = ""
       
       case input_string
-        when /(Rt\.\ *Hon\.)/, /(Rt(?:\.)\ *Hn\.)/, /(Hon\.)/, /(RtHn\.)/
-          title = $1
+        when /(Rt(?:\.*)\ *Hon\.)/, /(Rt(?:\.*)\ *Hn\.)/, /(RtHn\.)/
+          title = "Rt. Hon."
+          input_string.gsub!($1, "")
+        when /(Hon\.)/, /(Hn\.)/
+          title = "Hon."
           input_string.gsub!($1, "")
       end
       
