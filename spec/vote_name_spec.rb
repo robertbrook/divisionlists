@@ -159,8 +159,8 @@ describe "The VoteName Parser" do
       @beach_rt_hn_sir_m_h.surname.should == "Beach"
     end
     
-    it "should return a ministerial_title of 'Rt.Hn." do
-      @beach_rt_hn_sir_m_h.ministerial_title.should == "Rt.Hn."
+    it "should return a ministerial_title of 'Rt. Hon." do
+      @beach_rt_hn_sir_m_h.ministerial_title.should == "Rt. Hon."
     end
     
     it "should return a title of 'Sir'" do
@@ -325,6 +325,32 @@ describe "The VoteName Parser" do
     
     it "should not return a constituency" do
       @kinloch_sir_john_geoge_smyth.constituency.should == ""
+    end  
+  end
+  
+  describe "given VoteName 'Balfour,Rt Hn.J.Blair'" do
+    before do    
+      @balfour_rt_hn_j_blair = VoteName.new("Balfour,Rt Hn.J.Blair")
+    end
+  
+    it "should return a forename of 'J. Blair'" do
+      @balfour_rt_hn_j_blair.forename.should == "J. Blair"
+    end
+  
+    it "should return a surname of 'Balfour'" do
+      @balfour_rt_hn_j_blair.surname.should == "Balfour"
+    end
+    
+    it "should not return a title" do
+      @balfour_rt_hn_j_blair.title.should == ""
+    end
+    
+    it "should return a ministerial_title of 'Rt. Hon." do
+      @balfour_rt_hn_j_blair.ministerial_title.should == "Rt. Hon."
+    end
+    
+    it "should not return a constituency" do
+      @balfour_rt_hn_j_blair.constituency.should == ""
     end  
   end
 end
