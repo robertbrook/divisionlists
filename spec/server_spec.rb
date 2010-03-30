@@ -15,5 +15,4 @@ describe "My App" do
       # last_response.should be_ok
   end
   
-  
 end
