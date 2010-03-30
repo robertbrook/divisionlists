@@ -4,6 +4,7 @@ require 'rest_client'
 require 'json'
 require 'erb'
 require 'date'
+require 'haml'
 
 DB = 'http://localhost:5984/divisionlists'
 
@@ -17,5 +18,21 @@ get '/divisions/number/:numberkey.xml' do
   @archive_link = "http://hansard.millbanksystems.com/sittings/#{hansard_date}"
   
   content_type 'text/xml', :charset => 'utf-8'
-  erb :numbered_division, :format => :xml
+  erb :numbered_division, :format => :xml, :layout => false
+end
+
+get '/divisions' do
+  haml :divisions
+end
+
+get '/' do
+  haml :index
+end
+
+get '/search' do
+  haml :search
+end
+
+get '/favicon.ico' do
+  ""
 end
