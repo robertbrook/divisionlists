@@ -81,6 +81,8 @@ class VoteName
           "Manchester"
         when "Yorks."
           "Yorkshire"
+        when "Hunts."
+          "Huntingdon"
         else
           name
       end

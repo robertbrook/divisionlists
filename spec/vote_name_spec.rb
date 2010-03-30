@@ -96,9 +96,9 @@ describe "The VoteName Parser" do
     end  
   end
   
-  describe "given VoteName 'Barry, A. H. Smith-'" do
+  describe "given VoteName 'Barry, A. H. Smith- (Hunts.)'" do
     before do    
-      @barry_a_h_smith = VoteName.new("Barry, A. H. Smith-")
+      @barry_a_h_smith = VoteName.new("Barry, A. H. Smith- (Hunts.)")
     end
   
     it "should return a forename of 'A. H.'" do
@@ -113,8 +113,8 @@ describe "The VoteName Parser" do
       @barry_a_h_smith.title.should == ""
     end
     
-    it "should not return a constituency" do
-      @barry_a_h_smith.constituency.should == ""  
+    it "should return a constituency of 'Huntingdon'" do
+      @barry_a_h_smith.constituency.should == "Huntingdon"
     end  
   end
   
@@ -136,7 +136,7 @@ describe "The VoteName Parser" do
     end
     
     it "should return a constituency of 'Yorkshire'" do
-      @wilson_todd_wm_h_yorks.constituency.should == "Yorkshire"  
+      @wilson_todd_wm_h_yorks.constituency.should == "Yorkshire"
     end  
   end
 end
