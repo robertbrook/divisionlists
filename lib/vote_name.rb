@@ -57,7 +57,8 @@ class VoteName
       parts = input_string.split(" ")
 
       last_piece = parts.pop
-      if last_piece.strip =~ /\-$/
+      last_piece.strip! if last_piece
+      if last_piece =~ /\-$/
         surname = "#{last_piece}#{surname}"
       else
         parts << last_piece
@@ -73,8 +74,22 @@ class VoteName
       title = ""
       
       case input_string
-        when /(Sir)/, /(Lieut\.-Col\.)/, /(Lieut\.-General)/, /(Lord)/, /(Viscount)/, /(Colonel)/, 
-          /(Commander)/, /(Major)/, /(Earl(?: of*))/, /(Lt\.-Col\.)/, /(Col\.)/, /(Captain)/, /(Dr\.)/
+        when /(Lieut\.-Col\.)/, /(Lt\.-Col\.)/
+          title = "Lieutenant Colonel"
+          input_string.gsub!($1, "")
+        when /(Lieut\.-General)/
+          title = "Lieutenant General"
+          input_string.gsub!($1, "")
+        when /(Colonel)/, /(Col\.)/
+          title = "Colonel"
+          input_string.gsub!($1, "")
+        when /(Captain)/, /(Capt\.)/
+          title = "Captain"
+          input_string.gsub!($1, "")
+        when /(Dr\.)/, /(Doctor)/
+          title = "Doctor"
+          input_string.gsub!($1, "")
+        when /(Sir)/, /(Lord)/, /(Viscount)/, /(Commander)/, /(Major)/, /(Earl(?: of*))/
           title = $1
           input_string.gsub!($1, "")
       end
@@ -124,6 +139,8 @@ class VoteName
       name.gsub!("Wm.", "William")
       name.gsub!("Geo.", "George")
       name.gsub!("Edw.", "Edward")
+      name.gsub!("Thos.", "Thomas")
+      name.gsub!("Chas.", "Charles")
       name
     end
 end

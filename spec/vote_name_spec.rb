@@ -212,7 +212,7 @@ describe "The VoteName Parser" do
     end
     
     it "should return a title of 'Lieut.-General'" do
-      @laurie_lieut_general.title.should == "Lieut.-General"
+      @laurie_lieut_general.title.should == "Lieutenant General"
     end
     
     it "should not return a ministerial_title" do
@@ -238,7 +238,7 @@ describe "The VoteName Parser" do
     end
     
     it "should return a title of 'Lieut.-Col.'" do
-      @welby_lieut_col_a_c_e.title.should == "Lieut.-Col."
+      @welby_lieut_col_a_c_e.title.should == "Lieutenant Colonel"
     end
     
     it "should not return a ministerial_title" do

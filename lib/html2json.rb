@@ -14,7 +14,7 @@ def get_uuid
 end
 
 def write_to_log message
-  File.open("./dataload.log", 'a') {|f| f.write(message) }
+  File.open("../dataload.log", 'a') {|f| f.write(message) }
 end
 
 def log_error current_file, ref, item_name, item
@@ -106,11 +106,27 @@ def load_divisions_list html_file
     unless ayes.count == 1
       log_error current_file, error_ref, "ayes", ayes
       error_occured = true
+    else
+      ayes.xpath('./li').each do |member|
+        unless member.text.include?(",")
+          message = "error in file #{current_file}#{error_ref} - member name #{member.text.strip} did not include a comma\n"
+          write_to_log message
+          error_occured = true
+        end
+      end
     end
     
     unless noes.count == 1
       log_error current_file, error_ref, "noes", noes
       error_occured = true
+    else
+      noes.xpath('./li').each do |member|
+        unless member.text.include?(",")
+          message = "error in file #{current_file}#{error_ref} - member name #{member.text.strip} did not include a comma\n"
+          write_to_log message
+          error_occured = true
+        end
+      end
     end
     
     unless resolution.count == 1
