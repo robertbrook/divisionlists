@@ -75,7 +75,8 @@ class VoteName
       
       case input_string
         when /(Sir)/, /(Lieut\.-Col\.)/, /(Lieut\.-General)/, /(Lord)/, /(Viscount)/, /(Colonel)/, 
-          /(Commander)/, /(Major)/, /(Earl(?: of*))/, /(Lt\.-Col\.)/, /(Col\.)/, /(Captain)/, /(Dr\.)/
+          /(Commander)/, /(Major)/, /(Earl(?: of*))/, /(Lt\.-Col\.)/, /(Col\.)/, /(Captain)/, /(Dr\.)/,
+          /(Capt\.)/
           title = $1
           input_string.gsub!($1, "")
       end
