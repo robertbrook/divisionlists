@@ -10,8 +10,8 @@
     <member>
       <parly_title><%= member["ministerial_title"]%></parly_title>
       <title><%= member["title"]%></title>
-      <forename><%= member["forename"]%></forename>
-      <surname><%= member["surname"]%></surname>
+      <forename><%= member["forename"].gsub("???", "<illegible_text />")%></forename>
+      <surname><%= member["surname"].gsub("???", "<illegible_text />")%></surname>
     </member><%end%>
   </ayes>
   <ayes_tellers><%= @division["ayes_tellers"] %></ayes_tellers>
@@ -19,10 +19,9 @@
     <member>
       <parly_title><%= member["ministerial_title"]%></parly_title>
       <title><%= member["title"]%></title>
-      <forename><%= member["forename"]%></forename>
-      <surname><%= member["surname"]%></surname>
+      <forename><%= member["forename"].gsub("???", "<illegible_text />")%></forename>
+      <surname><%= member["surname"].gsub("???", "<illegible_text />")%></surname>
     </member><%end%>
   </noes>
   <noes_tellers><%= @division["noes_tellers"] %></noes_tellers>
-  <!-- <debug><%= @division.inspect %></debug> -->
 </division>

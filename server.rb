@@ -25,6 +25,19 @@ get '/divisions' do
   haml :divisions
 end
 
+get '/divisions/number/:numberkey' do
+  data = RestClient.get "#{DB}/_design/divisions/_view/by_number?key=%22#{params[:numberkey]}%22"
+  result = JSON.parse(data.body)
+  @division = result["rows"].first["value"]
+  
+  date = Date.new(@division["numeric_date"][0].to_i, @division["numeric_date"][1].to_i, @division["numeric_date"][2].to_i)
+  hansard_date = date.strftime('%Y/%b/%d').downcase
+  @archive_link = "http://hansard.millbanksystems.com/sittings/#{hansard_date}"
+  
+  content_type 'text/html', :charset => 'utf-8'
+  haml :numbered_division, :format => :xhtml, :layout => false
+end
+
 get '/' do
   haml :index
 end
