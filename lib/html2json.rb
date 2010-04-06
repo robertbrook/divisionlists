@@ -2,6 +2,7 @@ require 'rubygems'
 require 'nokogiri'
 require 'json'
 require 'rest_client'
+require 'vote_name'
 
 DBSERVER = "http://localhost:5984"
 DATABASE = "#{DBSERVER}/divisionlists"
@@ -161,7 +162,15 @@ def load_divisions_list html_file
       
       ayes_array = []
       ayes.xpath('./li').each do |aye|
-        ayes_array << aye.text.strip
+        member_hash = {}
+        vote_name = VoteName.new(aye.text.strip)
+        member_hash["ministerial_title"] = vote_name.ministerial_title
+        member_hash["title"] = vote_name.title
+        member_hash["forename"] = vote_name.forename
+        member_hash["surname"] = vote_name.surname
+        member_hash["constituency"] = vote_name.constituency
+        member_hash["division_name"] = aye.text.strip
+        ayes_array << member_hash
       end
       division_hash["ayes"] = ayes_array
       
@@ -172,7 +181,15 @@ def load_divisions_list html_file
 
       noes_array = []
       noes.xpath('./li').each do |noe|
-        noes_array << noe.text.strip
+        member_hash = {}
+        vote_name = VoteName.new(noe.text.strip)
+        member_hash["ministerial_title"] = vote_name.ministerial_title
+        member_hash["title"] = vote_name.title
+        member_hash["forename"] = vote_name.forename
+        member_hash["surname"] = vote_name.surname
+        member_hash["constituency"] = vote_name.constituency
+        member_hash["division_name"] = noe.text.strip
+        noes_array << member_hash
       end
       division_hash["noes"] = noes_array
 

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<%require 'lib/vote_name' %>
 <division>
   <number><%= @division["number"] %></number>
   <date><%= @division["date"] %></date>
@@ -8,20 +7,20 @@
   <archive_link><%= @archive_link %></archive_link>
   <resolution><%= @division["resolution"] %></resolution>
   <ayes><% @division["ayes"].each do |member| %>
-    <member><%votename = VoteName.new(member)%>
-      <parly_title><%= votename.ministerial_title%></parly_title>
-      <title><%= votename.title%></title>
-      <forename><%= votename.forename%></forename>
-      <surname><%= votename.surname%></surname>
+    <member>
+      <parly_title><%= member["ministerial_title"]%></parly_title>
+      <title><%= member["title"]%></title>
+      <forename><%= member["forename"]%></forename>
+      <surname><%= member["surname"]%></surname>
     </member><%end%>
   </ayes>
   <ayes_tellers><%= @division["ayes_tellers"] %></ayes_tellers>
   <noes><% @division["noes"].each do |member|%>
-    <member><%votename = VoteName.new(member)%>
-      <parly_title><%= votename.ministerial_title%></parly_title>
-      <title><%= votename.title%></title>
-      <forename><%= votename.forename%></forename>
-      <surname><%= votename.surname%></surname>
+    <member>
+      <parly_title><%= member["ministerial_title"]%></parly_title>
+      <title><%= member["title"]%></title>
+      <forename><%= member["forename"]%></forename>
+      <surname><%= member["surname"]%></surname>
     </member><%end%>
   </noes>
   <noes_tellers><%= @division["noes_tellers"] %></noes_tellers>
