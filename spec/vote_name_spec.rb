@@ -379,4 +379,30 @@ describe "The VoteName Parser" do
       @wyvill_marmaduke_darcy.constituency.should == ""
     end
   end
+  
+  describe "given VoteName 'Williams,JosephPowell-(Bi???'" do
+    before do    
+      @williams_joseph_powell = VoteName.new("Williams,JosephPowell-(Bi???")
+    end
+  
+    it "should return a forename of 'Joseph'" do
+      @williams_joseph_powell.forename.should == "Joseph"
+    end
+  
+    it "should return a surname of 'Powell-Williams'" do
+      @williams_joseph_powell.surname.should == "Powell-Williams"
+    end
+    
+    it "should not return a title" do
+      @williams_joseph_powell.title.should == ""
+    end
+    
+    it "should not return a ministerial_title" do
+      @williams_joseph_powell.ministerial_title.should == ""
+    end
+    
+    it "should return a constituency of 'Bi???" do
+      @williams_joseph_powell.constituency.should == "Bi???"
+    end
+  end
 end

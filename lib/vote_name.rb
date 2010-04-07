@@ -49,6 +49,8 @@ class VoteName
     end
     
     def get_surname input_string
+      input_string = even_out_spacing(input_string)
+
       parts = input_string.split(",").reverse
       surname = parts.pop.strip
 
@@ -114,11 +116,8 @@ class VoteName
     end
     
     def get_forename(input_string)
-      names = input_string.scan(/[A-Z](?:[^A-Z]*)/)      
-      forename = names.join(" ")
+      forename = even_out_spacing(input_string)
       forename = expand_forename(forename)
-      forename = forename.squeeze(" ").strip
-      forename.gsub("' ", "'")
     end
     
     def expand_constituency_name name
@@ -134,6 +133,13 @@ class VoteName
         else
           name
       end
+    end
+   
+    def even_out_spacing input_string
+      result = input_string.scan(/[A-Z](?:[^A-Z]*)/)
+      result = result.join(" ")
+      result = result.squeeze(" ").strip
+      result.gsub("' ", "'").gsub("- ", "-")
     end
     
     def expand_forename name
