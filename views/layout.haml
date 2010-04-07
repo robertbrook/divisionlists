@@ -2,17 +2,23 @@
 %html
   %head
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}
-    %title Division Lists
+    %title= @title + " (Division Lists)"
     %link{:rel=>"stylesheet", :href=>"default.css", :type=>"text/css", :media=>"screen"}
     %script{:src=>"http://html5shiv.googlecode.com/svn/trunk/html5.js"}
   %body
     %header
-      %li link to index page
-      %li something
-    #content
-      = yield
+      %h1= @title
+      %h2 Division Lists
+    %section= yield
     %footer
-      %li link to disclaimer
-      %li link to parly copyright
+    %nav
+      %ul
+        %li Search
+        %li 
+          %a{:href=>"http://www.parliament.uk/site_information/parliamentary_copyright.cfm"}
+            &copy; UK Parliament
+        %li 
+          %a{:href=>"/disclaimer"}
+            Disclaimer
       
     

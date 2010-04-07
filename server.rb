@@ -39,8 +39,15 @@ get '/divisions/number/:numberkey' do
 end
 
 get '/' do
+  @title = "Home"
   haml :index
 end
+
+# todo http://sinatra.rubyforge.org/api/classes/Sinatra/Sass.html
+# get '/default.css' do
+#   header 'Content-Type' => 'text/css; charset=utf-8'
+#   sass :default
+# end
 
 get '/search' do
   haml :search
