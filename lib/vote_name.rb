@@ -117,7 +117,8 @@ class VoteName
       names = input_string.scan(/[A-Z](?:[^A-Z]*)/)      
       forename = names.join(" ")
       forename = expand_forename(forename)
-      forename.squeeze(" ").strip
+      forename = forename.squeeze(" ").strip
+      forename.gsub("' ", "'")
     end
     
     def expand_constituency_name name
