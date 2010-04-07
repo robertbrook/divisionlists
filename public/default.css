@@ -2,21 +2,24 @@ body {
   margin: 2em auto;
   width: 550px;
   font-family: Georgia, serif;
-  font-size: 1.2em; }
+  font-size: 1.2em; 
+  line-height:140%;}
 
-h2 {
-  font-size: 105%;
-  margin-bottom: 0;
-  clear: both; }
+header, footer, nav, section, aside {display:block;}
 
-.warning {
-  color: red;
-  font-style: normal; }
+nav li
+{
+display: inline;
+list-style-type: none;
+padding-right: 1em;
+}
+
+h1, h2, h3 {font-weight:normal;}
 
 a {
   text-decoration: none; }
-  a:hover {
-    text-decoration: underline; }
+a:hover {
+  text-decoration: underline; }
 
 #search {
   font-size: 1.8em; }
@@ -35,62 +38,5 @@ blockquote {
   font-style: normal;
   margin: 0; }
 
-.edm .number {
-  font-weight: bold; }
-
 ul, ol {
   padding: 0; }
-
-ul.tags {
-  display: inline;
-  float: left;
-  clear: both;
-  margin-bottom: 1em;
-  width: 100%;
-  display: block; }
-
-li.tag, li.tag a {
-  display: inline;
-  font-family: Verdana, Arial, sans-serif;
-  font-size: 0.8em;
-  list-style-type: none;
-  color: black; }
-
-li.tag a:hover {
-  color: #b80304;
-  text-decoration: none; }
-
-li.tag {
-  margin-right: 0.8em;
-  border: 1px solid silver;
-  border-radius: 12px/15px;
-  -moz-border-radius: 12px/15px;
-  -webkit-border-radius: 12px 15px;
-  background: lightgrey;
-  background: -moz-linear-gradient(75% 19% -90deg,#E8E8E8, #BFBFBF 60%, #C2C2C2 100%);
-  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E8E8E8), to(#C2C2C2), color-stop(.6,#BFBFBF));
-  float: left;
-  margin-top: 0.6em;
-  padding: 0.3em 0.4em; }
-
-li.item {
-  list-style-type: none;
-  padding-bottom: 1em; }
-
-li.uk_parliament_twitter_result {
-  list-style-type: none;
-  padding-bottom: 1em; }
-
-.link {
-  color: green; }
-
-.kind {
-  font-variant: small-caps; }
-
-.days_ago {
-  font-style: italic; }
-
-#map {
-  width: 500px;
-  height: 400px;
-  margin-top: 1em; }
