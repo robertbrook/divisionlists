@@ -3,9 +3,9 @@ body {
   width: 550px;
   font-family: Georgia, serif;
   font-size: 1.2em; 
-  line-height:140%;}
+  }
 
-header, footer, nav, section, aside {display:block;}
+header, footer, nav, section, aside {display:block;line-height:140%;}
 
 nav li
 {
@@ -21,8 +21,7 @@ a {
 a:hover {
   text-decoration: underline; }
 
-#search {
-  font-size: 1.8em; }
+#search { font-size: 1.8em; line-height:normal;}
   #search input[type=text] {
     font-size: 1em;
     padding: 1px;
