@@ -65,6 +65,13 @@ class VoteName
       else
         parts << last_piece
       end
+            
+      surname.gsub!("Mac ", "Mac")
+      surname.gsub!("Mc ", "Mac")
+      surname.gsub!("M ", "M")
+      surname.gsub!("O ", "O")
+      surname.gsub!("M' ", "M'")
+      surname.gsub!("O' ", "O'")
       
       input_string = parts.join(" ")
       
@@ -130,6 +137,8 @@ class VoteName
           "Huntingdon"
         when "Birm."
           "Birmingham"
+        when "Caithness-sh."
+          "Caithness-shire"
         else
           name
       end

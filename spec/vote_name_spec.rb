@@ -405,4 +405,18 @@ describe "The VoteName Parser" do
       @williams_joseph_powell.constituency.should == "Bi???"
     end
   end
+  
+  describe "given VoteName 'MacAleese, Daniel'" do
+    before do    
+      @macaleese_daniel = VoteName.new("MacAleese, Daniel")
+    end
+  
+    it "should return a forename of 'Daniel'" do
+      @macaleese_daniel.forename.should == "Daniel"
+    end
+  
+    it "should return a surname of 'MacAleese'" do
+      @macaleese_daniel.surname.should == "MacAleese"
+    end
+  end
 end
