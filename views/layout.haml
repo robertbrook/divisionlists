@@ -9,6 +9,7 @@
     %header
       %h1= @title
       %h2 Division Lists
+      <form action="/search" id="search" method="get" name="search">I want to search Parliament<br />for a Division mentioning &hellip;<input accesskey="s" id="q" name="q" size="18" type="text" value="" /><input type="submit" value="Go!" /></form>
     %section= yield
     %footer
     %nav
