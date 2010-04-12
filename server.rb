@@ -50,9 +50,15 @@ end
 # end
 
 get '/search' do
+  @title = "Search"
   haml :search
 end
 
 get '/favicon.ico' do
   ""
+end
+
+get '/disclaimer' do
+  @title = "Disclaimer"
+  haml :disclaimer
 end
