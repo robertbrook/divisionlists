@@ -419,4 +419,102 @@ describe "The VoteName Parser" do
       @macaleese_daniel.surname.should == "MacAleese"
     end
   end
+  
+  describe "give VoteName 'Smith, Dave (Isle of W)" do
+    it "should return the constituency 'Isle of Wight'" do
+      dave_smith = VoteName.new("Smith, Dave (Isle of W)")
+      dave_smith.constituency.should == "Isle of Wight"
+    end
+  end
+  
+  describe "give VoteName 'Smith, Dave (Isle of W???)" do
+    it "should return the constituency 'Isle of Wight'" do
+      dave_smith = VoteName.new("Smith, Dave (Isle of W)")
+      dave_smith.constituency.should == "Isle of Wight"
+    end
+  end
+
+  describe "give VoteName 'Smith, Dave (King's L'nn)" do
+    it "should return the constituency 'King\'s Lynn'" do
+      dave_smith = VoteName.new("Smith, Dave (King's L'nn)")
+      dave_smith.constituency.should == "King's Lynn"
+    end
+  end
+  
+  describe "give VoteName 'Smith, Dave (Stockton-on-T???)" do
+    it "should return the constituency 'Stockton-on-Tees'" do
+      dave_smith = VoteName.new("Smith, Dave (Stockton-on-T???)")
+      dave_smith.constituency.should == "Stockton-on-Tees"
+    end
+  end
+  
+  describe "give VoteName 'Smith, Dave (Stockton-on-Tee)" do
+    it "should return the constituency 'Stockton-on-Tees'" do
+      dave_smith = VoteName.new("Smith, Dave (Stockton-on-Tee)")
+      dave_smith.constituency.should == "Stockton-on-Tees"
+    end
+  end
+  
+  describe "give VoteName 'Smith, Dave (Swn's'a)" do
+    it "should return the constituency 'Swansea'" do
+      dave_smith = VoteName.new("Smith, Dave (Swn's'a)")
+      dave_smith.constituency.should == "Swansea"
+    end
+  end
+  
+  describe "give VoteName 'Smith, Dave (Heref'd)" do
+    it "should return the constituency 'Hereford'" do
+      dave_smith = VoteName.new("Smith, Dave (Heref'd)")
+      dave_smith.constituency.should == "Hereford"
+    end
+  end
+  
+  describe "give VoteName 'Smith, Dave (Derbysh.)" do
+    it "should return the constituency 'Derbyshire'" do
+      dave_smith = VoteName.new("Smith, Dave (Derbysh.)")
+      dave_smith.constituency.should == "Derbyshire"
+    end
+  end
+  
+  describe "give VoteName 'Smith, Dave (Berksh.)" do
+    it "should return the constituency 'Berkshire'" do
+      dave_smith = VoteName.new("Smith, Dave (Berksh.)")
+      dave_smith.constituency.should == "Berkshire"
+    end
+  end
+  
+  describe "give VoteName 'Smith, Dave (Beds.)" do
+    it "should return the constituency 'Bedfordshire'" do
+      dave_smith = VoteName.new("Smith, Dave (Beds.)")
+      dave_smith.constituency.should == "Bedfordshire"
+    end
+  end
+  
+  describe "give VoteName 'Smith, Dave (Antrim,E.)" do
+    it "should return the constituency 'Antrim East'" do
+      dave_smith = VoteName.new("Smith, Dave (Antrim,E.)")
+      dave_smith.constituency.should == "Antrim East"
+    end
+  end
+  
+  describe "give VoteName 'Smith, Dave (Antrim N.)" do
+    it "should return the constituency 'Antrim North'" do
+      dave_smith = VoteName.new("Smith, Dave (Antrim N.)")
+      dave_smith.constituency.should == "Antrim North"
+    end
+  end
+  
+  describe "give VoteName 'Smith, Dave (Newc.under Lyme)" do
+    it "should return the constituency 'Newcastle under Lyme'" do
+      dave_smith = VoteName.new("Smith, Dave (Newc.under Lyme)")
+      dave_smith.constituency.should == "Newcastle under Lyme"
+    end
+  end
+  
+  describe "give VoteName 'Smith, Dave (Breconsh???)" do
+    it "should return the constituency 'Breconshire'" do
+      dave_smith = VoteName.new("Smith, Dave (Breconsh???)")
+      dave_smith.constituency.should == "Breconshire"
+    end
+  end
 end
