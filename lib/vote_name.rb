@@ -128,17 +128,52 @@ class VoteName
     end
     
     def expand_constituency_name name
+      #replace a dot followed by any letter with ". "
+      if name =~ /\.([A-Za-z])/
+        name.gsub!(/\.[A-Za-z]/, ". #{$1}")
+      end
+      
+      #replace a comma followed by any character with ", "
+      name = name.gsub(",", ", ").squeeze(" ")
+      
+      #assume anything with 'sh???' was supposed to end 'shire'
+      if name =~ /(sh\?\?\?)$/
+        name.gsub!($1, "shire")
+      end
+      
+      #assume that 'of' followed immediately be a capital letter is a mistake
+      if name =~ /of([A-Z])/
+        name.gsub!(/of[A-Z]/, "of #{$1}")
+      end
+      
+      name.gsub!("sh.", "shire")
+      name.gsub!(" N.", " North")
+      name.gsub!(" E.", " East")
+      name.gsub!("Newc.", "Newcastle")
+      
       case name
-        when "Manch'r"
-          "Manchester"
-        when "Yorks."
-          "Yorkshire"
-        when "Hunts."
-          "Huntingdon"
+        when /Antrim,/
+          name.gsub!(",", "")
+        when "Beds."
+          "Bedfordshire"
         when "Birm."
           "Birmingham"
-        when "Caithness-sh."
-          "Caithness-shire"
+        when "Heref'd"
+          "Hereford"
+        when "Hunts."
+          "Huntingdon"
+        when /^Isle of W/
+          "Isle of Wight"
+        when "King's L'nn"
+          "King's Lynn"  
+        when "Manch'r"
+          "Manchester"
+        when "Stockton-on-T???", "Stockton-on-Tee"
+          "Stockton-on-Tees"
+        when "Swn's'a"
+          "Swansea"
+        when "Yorks."
+          "Yorkshire"
         else
           name
       end
