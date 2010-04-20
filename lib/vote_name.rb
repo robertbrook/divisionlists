@@ -178,23 +178,6 @@ class VoteName
           "Swansea"
         when "Yorks."
           "Yorkshire"
-        # when "Hunts."
-        #           "Huntingdon"
-        #         when "Birm."
-        #           "Birmingham"
-        #         when "Caithness-sh."
-        #           "Caithness-shire"
-        #         when "Beds."
-        #           "Bedfordshire"
-        #         when "Isle of W"
-        #           "Isle of Wight"
-        #         when /Derbysh(\.?)/
-        #           "Derbyshire"
-        #         when /Berksh(\.?)/
-        #           "Berkshire"
-        #         when /Antrim N(\.?)/
-        #           "Antrim North"
-
         else
           name
       end
