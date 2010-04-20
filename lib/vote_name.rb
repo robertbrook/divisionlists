@@ -1,3 +1,6 @@
+require 'rubygems'
+require 'text'
+
 class VoteName
   @@forename = ''
   @@surname = ''
@@ -40,7 +43,8 @@ class VoteName
         constituency = $1
         input_string.gsub!(/\(([^\)]*)\)*/, "")
         input_string.strip!
-        constituency =  expand_constituency_name(constituency)
+        constituency = expand_constituency_name(constituency)
+        
       else
         constituency = ""
       end
@@ -139,6 +143,16 @@ class VoteName
           "Birmingham"
         when "Caithness-sh."
           "Caithness-shire"
+        when "Beds."
+          "Bedfordshire"
+        when "Isle of W"
+          "Isle of Wight"
+        when /Derbysh(\.?)/
+          "Derbyshire"
+        when /Berksh(\.?)/
+          "Berkshire"
+        when /Antrim N(\.?)/
+          "Antrim North"
         else
           name
       end
