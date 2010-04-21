@@ -152,6 +152,7 @@ class VoteName
       
       name.gsub!("sh.", "shire")
       name.gsub!(" N.", " North")
+      name.gsub!("N. ", "North ")
       name.gsub!(" E.", " East")
       name.gsub!("Newc.", "Newcastle")
       
@@ -162,24 +163,26 @@ class VoteName
           "Bedfordshire"
         when "Birm."
           "Birmingham"
+        when /^Halif/
+          "Halifax"
         when "Heref'd"
           "Hereford"
         when "Hunts."
           "Huntingdon"
-        when /^Isle of W/
+        when /^Isle of W/, /^Isleof W/
           "Isle of Wight"
         when "King's L'nn"
           "King's Lynn"  
         when "Manch'r"
           "Manchester"
-        when "Stockton-on-T???", "Stockton-on-Tee"
+        when /^Stockton-on-T/
           "Stockton-on-Tees"
         when "Swn's'a"
           "Swansea"
         when "Yorks."
           "Yorkshire"
         else
-          name
+          name.strip
       end
     end
    
