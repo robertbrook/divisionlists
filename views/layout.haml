@@ -7,17 +7,11 @@
     %script{:src=>"http://html5shiv.googlecode.com/svn/trunk/html5.js"}
   %body
     %header
-      <form action="search" id="search" method="get" name="search">I want to search Parliament<br />for a Division mentioning &hellip;<input accesskey="s" id="q" name="q" size="18" type="text" value="" /><input type="submit" value="Go!" /></form>
+      <form action="search" id="search" method="get" name="search">I want to search Parliament<br />for a Division about<input accesskey="s" id="q" name="q" size="18" type="text" value="" /><input type="submit" value="Go!" /></form>
     %section= yield
     %footer
     %nav
-      %ul
-        %li Division Lists
-        %li
-          %a{:href=>"http://www.parliament.uk/site_information/parliamentary_copyright.cfm"}
-            Parliamentary copyright
-        %li 
-          %a{:href=>"/disclaimer"}
-            Disclaimer
+      %a{:href=>"/"}
+        More about this site
       
     

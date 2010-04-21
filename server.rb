@@ -8,6 +8,11 @@ require 'haml'
 
 DB = 'http://localhost:5984/divisionlists'
 
+get '/' do
+  @title = "Search"
+  haml :index
+end
+
 get '/divisions/number/:numberkey.xml' do
   data = RestClient.get "#{DB}/_design/divisions/_view/by_number?key=%22#{params[:numberkey]}%22"
   result = JSON.parse(data.body)
@@ -38,10 +43,7 @@ get '/divisions/number/:numberkey' do
   haml :numbered_division, :format => :xhtml, :layout => false
 end
 
-get '/' do
-  @title = "Home"
-  haml :index
-end
+
 
 # todo http://sinatra.rubyforge.org/api/classes/Sinatra/Sass.html
 # get '/default.css' do
