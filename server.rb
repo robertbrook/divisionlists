@@ -26,6 +26,9 @@ get '/divisions/number/:numberkey.xml' do
   erb :numbered_division, :format => :xml, :layout => false
 end
 
+get '/divisions/number/:numberkey.csv' do
+end
+
 get '/divisions' do
   haml :divisions
 end
@@ -43,8 +46,6 @@ get '/divisions/number/:numberkey' do
   haml :numbered_division, :format => :xhtml, :layout => false
 end
 
-
-
 # todo http://sinatra.rubyforge.org/api/classes/Sinatra/Sass.html
 # get '/default.css' do
 #   header 'Content-Type' => 'text/css; charset=utf-8'
@@ -60,7 +61,3 @@ get '/favicon.ico' do
   ""
 end
 
-get '/disclaimer' do
-  @title = "Disclaimer"
-  haml :disclaimer
-end
