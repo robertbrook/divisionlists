@@ -65,6 +65,14 @@ get '/search' do
   
   @divisions = result["rows"]
   
+  data = RestClient.get "#{DB}/_design/index/_view/member_name?key=%22#{term}%22"
+  result = JSON.parse(data.body)
+  
+  @members = result["rows"]
+  
+  #cheat for the demo ;)
+  @divisions = @divisions.concat(@members)
+  
   haml :search
 end
 
