@@ -3,8 +3,12 @@
   %h2 We couldn't find anything
   = "Sorry! We couldn't find any divisions lists when searching for <em>" + @params[:q] + "</em>."
   %p You may find a division if you search again using a longer word.
-%ol
-  - @constituencies.each do |link|
-    %li
-      %a{ :href => "/divisions/number/#{link}" }= "Division #{link}"
+- else
+  %p= "You searched for <em>" + @params[:q] + "</em>." 
+  %p The following division lists contain that text:
+  %ol.search-results
+    - @constituencies.each do |link|
+      %li
+        %a{ :href => "/divisions/number/#{link}" }= "Division #{link}"
+        = link.inspect
     
