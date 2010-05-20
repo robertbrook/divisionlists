@@ -1,9 +1,13 @@
 #division
-  #number= "Division #{@division["number"]}"
-  #date
+  %h2= "Division #{@division["number"]}"
+
+  %p
+    Read Hansard for &mdash;
     %a{:href => @archive_link, :title => "Hansard archive for #{@division['date']}"}= @division["date"]
-  #page= "Page #{@division["page"]}"
-  #resolution= @division["resolution"]
+
+  %div{:style=>"font-style:italic;float:right;display:block;"}= "[Page #{@division["page"]}"
+
+  %blockquote= @division["resolution"]
         
   - votes_cast = @division['ayes'].count + @division['noes'].count
   - ayes_percent = (@division['ayes'].count * 100 / votes_cast.to_f).round
