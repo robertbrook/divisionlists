@@ -1,0 +1,9 @@
+body {margin:2em 4em;font-family:serif;font-size:1.4em;line-height:140%;}
+a {text-decoration:none;}
+div.division-list {border:1pt solid gray;padding:1em 2em;margin:1em 0;}
+p.date:before {content:'Date ';font-weight:bold;}
+p.resolution:before {content:'Resolution ';font-weight:bold;}
+ol.ayes:before {content:'Ayes ';font-weight:bold;}
+ol.noes:before {content:'Noes ';font-weight:bold;}
+p.page:before { content: "Page: " }
+p.divnum:before { content: "Division Number: " }

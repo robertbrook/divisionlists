@@ -1,39 +1,39 @@
-%html
-  %head
-    %title= "Division #{@division['number']}, #{@division['date']}"
-  %body
-    #division
-      #number= @division["number"]
-      #date
-        %a{:href => @archive_link, :title => "Hansard archive for #{@division['date']}"}= @division["date"]
-      #page= @division["page"]
-      #file= @division["file"]
-      #resolution= @division["resolution"]
-      
-      - votes_cast = @division['ayes'].count + @division['noes'].count
-      - ayes_percent = (@division['ayes'].count * 100 / votes_cast.to_f).round
-      - noes_percent = (@division['noes'].count * 100 / votes_cast.to_f).round
-      
-      ="Votes cast: #{votes_cast}"
-      
-      #ayes
-        ="Ayes: #{@division['ayes'].count} (#{ayes_percent}%)"
-        %ul.ayes
-        - @division["ayes"].each do |member|
-          %li.member
-            %span.parly_title= member["ministerial_title"]
-            %span.title= member["title"]
-            %span.forename= member["forename"].gsub("???", '<span class="illegible_text"></span>')
-            %span.surname= member["surname"].gsub("???", '<span class="illegible_text"></span>')
-      #ayes_tellers= @division["ayes_tellers"]
-      #noes
-        ="Noes: #{@division['noes'].count} (#{noes_percent}%)"
-        %ul.noes
-        - @division["noes"].each do |member|
-          %li.member
-            %span.parly_title= member["ministerial_title"]
-            %span.title= member["title"]
-            %span.forename= member["forename"].gsub("???", '<span class="illegible_text"></span>')
-            %span.surname= member["surname"].gsub("???", '<span class="illegible_text"></span>')
-      #noes_tellers= @division["noes_tellers"]
-
+#division
+  #number= "Division #{@division["number"]}"
+  #date
+    %a{:href => @archive_link, :title => "Hansard archive for #{@division['date']}"}= @division["date"]
+  #page= "Page #{@division["page"]}"
+  #resolution= @division["resolution"]
+  
+  - votes_cast = @division['ayes'].count + @division['noes'].count
+  - ayes_percent = (@division['ayes'].count * 100 / votes_cast.to_f).round
+  - noes_percent = (@division['noes'].count * 100 / votes_cast.to_f).round
+  
+  ="Votes cast: #{votes_cast}"
+  
+  #ayes
+    ="Ayes: #{@division['ayes'].count} (#{ayes_percent}%)"
+    %ol.ayes
+      - @division["ayes"].each do |member|
+        %li.member
+          %span.parly_title= member["ministerial_title"]
+          %span.title= member["title"]
+          %span.forename= member["forename"].gsub("???", '<span class="illegible_text"></span>')
+          %span.surname= member["surname"].gsub("???", '<span class="illegible_text"></span>')
+    .tellers= @division["ayes_tellers"]
+  
+  #noes
+    ="Noes: #{@division['noes'].count} (#{noes_percent}%)"
+    %ol.noes
+      - @division["noes"].each do |member|
+        %li.member
+          %span.parly_title= member["ministerial_title"]
+          %span.title= member["title"]
+          %span.forename= member["forename"].gsub("???", '<span class="illegible_text"></span>')
+          %span.surname= member["surname"].gsub("???", '<span class="illegible_text"></span>')
+    .tellers= @division["noes_tellers"]
+  
+  #options
+    %a{ :href => "#{request.url}.xml"} Download XML
+    %br
+    %a{ :href => "/#{@division["file"]}" } View original file
