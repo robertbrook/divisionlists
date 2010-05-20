@@ -6,6 +6,7 @@ require 'erb'
 require 'date'
 require 'haml'
 require 'sass'
+require 'cgi'
 
 DB = 'http://localhost:5984/divisionlists'
 
@@ -57,7 +58,9 @@ end
 get '/search' do
   @title = "Search"
   
-  data = RestClient.get "#{DB}/_design/index/_view/constituency?key=%22#{params[:q].downcase}%22"
+  term = CGI.escape(params[:q].downcase)
+  
+  data = RestClient.get "#{DB}/_design/index/_view/constituency?key=%22#{term}%22"
   result = JSON.parse(data.body)
   
   @divisions = result["rows"]
