@@ -3,13 +3,15 @@
   %head
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}
     %title= @title + " (Division Lists)"
+    <link href='http://fonts.googleapis.com/css?family=IM+Fell+DW+Pica:regular,italic' rel='stylesheet' type='text/css'>
     %link{:rel=>"stylesheet", :href=>"/styles.css", :type=>"text/css", :media=>"screen"}
     %script{:src=>"http://html5shiv.googlecode.com/svn/trunk/html5.js"}
   %body
     %header
-      <form action="/search" id="search" method="get" name="search">I want to search Parliament<br />for a Division about<input accesskey="s" id="q" name="q" size="18" type="text" value="" /><input type="submit" value="Go!" /></form>
       %nav
-        %a{:href=>"/"} More about this site
+        Division Lists 1804&mdash;1987
+        %a{:href => "/"} More about this site
+      <form action="/search" id="search" method="get" name="search">I want to search Parliament<br />for a Division about<input accesskey="s" id="q" name="q" size="18" type="text" value="" /><input type="submit" value="Go!" /></form>
     %section= yield
     %footer
 
