@@ -54,6 +54,12 @@ end
 
 get '/search' do
   @title = "Search"
+  
+  data = RestClient.get "#{DB}/_design/index/_view/constituency?key=%22#{params[:q]}%22"
+  result = JSON.parse(data.body)
+  
+  @constituencies = result["rows"].collect { |x| x["value"]["number"] }
+  
   haml :search
 end
 
