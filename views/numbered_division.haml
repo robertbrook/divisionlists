@@ -4,11 +4,11 @@
     %a{:href => @archive_link, :title => "Hansard archive for #{@division['date']}"}= @division["date"]
   #page= "Page #{@division["page"]}"
   #resolution= @division["resolution"]
-
+        
   - votes_cast = @division['ayes'].count + @division['noes'].count
   - ayes_percent = (@division['ayes'].count * 100 / votes_cast.to_f).round
   - noes_percent = (@division['noes'].count * 100 / votes_cast.to_f).round
-
+    
   ="Votes cast: #{votes_cast}"
 
   #ayes
