@@ -8,11 +8,11 @@
   %body
     %header
       <form action="search" id="search" method="get" name="search">I want to search Parliament<br />for a Division about<input accesskey="s" id="q" name="q" size="18" type="text" value="" /><input type="submit" value="Go!" /></form>
+      %nav
+        %a{:href=>"/"} More about this site
     %section= yield
     %footer
-    %nav
-      %a{:href=>"/"}
-        More about this site
-      / only link to the home page when not on the home page!
+
+      
       
     

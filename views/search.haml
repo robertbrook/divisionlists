@@ -1,5 +1,10 @@
-#search_results
+
+- if @constituencies.empty?
+  %h2 We couldn't find anything
+  = "Sorry! We couldn't find any divisions lists when searching for <em>" + @params[:q] + "</em>."
+  %p You may find a division if you search again using a longer word.
+%ol
   - @constituencies.each do |link|
-    %a{ :href => "/divisions/number/#{link}" }
-      Division #{link}
-    %br
+    %li
+      %a{ :href => "/divisions/number/#{link}" }= "Division #{link}"
+    
