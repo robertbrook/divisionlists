@@ -60,7 +60,7 @@ get '/search' do
   data = RestClient.get "#{DB}/_design/index/_view/constituency?key=%22#{params[:q].downcase}%22"
   result = JSON.parse(data.body)
   
-  @constituencies = result["rows"].collect { |x| x["value"]["number"] }
+  @divisions = result["rows"]
   
   haml :search
 end
