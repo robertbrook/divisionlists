@@ -1,4 +1,5 @@
-- @constituencies.each do |link|
-  %a{ :href => "/divisions/number/#{link}" }
-    Division #{link}
-  %br
+#search_results
+  - @constituencies.each do |link|
+    %a{ :href => "/divisions/number/#{link}" }
+      Division #{link}
+    %br

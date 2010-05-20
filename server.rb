@@ -42,20 +42,21 @@ get '/divisions/number/:numberkey' do
   hansard_date = date.strftime('%Y/%b/%d').downcase
   @archive_link = "http://hansard.millbanksystems.com/sittings/#{hansard_date}"
   
+  @title = "Division number #{params[:numberkey]}"
+  
   content_type 'text/html', :charset => 'utf-8'
-  haml :numbered_division, :format => :xhtml, :layout => false
+  haml :numbered_division, :format => :xhtml
 end
 
-# todo http://sinatra.rubyforge.org/api/classes/Sinatra/Sass.html
-# get '/default.css' do
-#   header 'Content-Type' => 'text/css; charset=utf-8'
-#   sass :default
-# end
+get '/default.css' do
+  content_type 'text/css', :charset => 'utf-8'
+  sass :default
+end
 
 get '/search' do
   @title = "Search"
   
-  data = RestClient.get "#{DB}/_design/index/_view/constituency?key=%22#{params[:q]}%22"
+  data = RestClient.get "#{DB}/_design/index/_view/constituency?key=%22#{params[:q].downcase}%22"
   result = JSON.parse(data.body)
   
   @constituencies = result["rows"].collect { |x| x["value"]["number"] }
