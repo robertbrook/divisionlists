@@ -1,14 +1,14 @@
 
-- if @constituencies.empty?
+- if @divisions.empty?
   %h2 We couldn't find anything
   = "Sorry! We couldn't find any divisions lists when searching for <em>" + @params[:q] + "</em>."
   %p You may find a division if you search again using a longer word.
 - else
-  %p= "You searched for <em>" + @params[:q] + "</em>." 
-  %p The following division lists contain that text:
+  %p= "You searched for <em>" + @params[:q] + "</em>. " + @divisions.length.to_s + " division lists contain that text:"
   %ol.search-results
-    - @constituencies.each do |link|
+    - @divisions.each do |division|
+      - divnum = division["value"]["number"]
       %li
-        %a{ :href => "/divisions/number/#{link}" }= "Division #{link}"
-        = link.inspect
+        %a{ :href => "/divisions/number/#{divnum}" }= "Division #{divnum}"
+        
     
