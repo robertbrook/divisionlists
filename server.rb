@@ -60,6 +60,8 @@ get '/search' do
   
   term = CGI.escape(params[:q].downcase)
   
+  @term = Rack::Utils.escape_html(params[:q])
+  
   #search constituencies
   data = RestClient.get "#{DB}/_design/index/_view/constituency?key=%22#{term}%22"
   result = JSON.parse(data.body)

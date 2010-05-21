@@ -11,7 +11,7 @@
       %nav
         Division Lists 1804&mdash;1987
         %a{:href => "/"} More about this site
-      <form action="/search" id="search" method="get" name="search">I want to search Parliament<br />for a Division about<input accesskey="s" id="q" name="q" size="18" type="text" value="" /><input type="submit" value="Go!" /></form>
+      <form action="/search" id="search" method="get" name="search">I want to search Parliament<br />for a Division about<input accesskey="s" id="q" name="q" size="18" type="text" value="#{@term}" /><input type="submit" value="Go!" /></form>
     %section= yield
     %footer
 
