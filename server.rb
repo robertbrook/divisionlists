@@ -60,18 +60,26 @@ get '/search' do
   
   term = CGI.escape(params[:q].downcase)
   
+  #search constituencies
   data = RestClient.get "#{DB}/_design/index/_view/constituency?key=%22#{term}%22"
   result = JSON.parse(data.body)
   
   @divisions = result["rows"]
   
+  #search members
   data = RestClient.get "#{DB}/_design/index/_view/member_name?key=%22#{term}%22"
   result = JSON.parse(data.body)
   
   @members = result["rows"]
   
+  #search resolution text
+  data = RestClient.get "#{DB}/_design/index/_view/resolution?key=%22#{term}%22"
+  result = JSON.parse(data.body)
+  
+  @resolutions = result["rows"]
+  
   #cheat for the demo ;)
-  @divisions = @divisions.concat(@members)
+  @divisions = @divisions.concat(@members).concat(@resolutions)
   
   haml :search
 end
