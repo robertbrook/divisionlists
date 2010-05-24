@@ -2,40 +2,15 @@ require 'rubygems'
 require 'text'
 
 class VoteName
-  @@forename = ''
-  @@surname = ''
-  @@title = ''
-  @@constituency = ''
-  @@ministerial_title = ''
-  
+  attr_reader :forename, :surname, :title, :constituency, :parliamentary_title
+    
   def initialize(input_string)
-    @@constituency, input_string = get_constituency(input_string)
-    @@surname, input_string = get_surname(input_string)
-    @@title, input_string = get_title(input_string)
-    @@ministerial_title, input_string = get_ministerial_title(input_string)
-    @@forename = get_forename(input_string)
+    @constituency, input_string = get_constituency(input_string)
+    @surname, input_string = get_surname(input_string)
+    @title, input_string = get_title(input_string)
+    @parliamentary_title, input_string = get_parliamentary_title(input_string)
+    @forename = get_forename(input_string)
   end
-  
-  def forename
-    @@forename
-  end
-  
-  def surname
-    @@surname
-  end
-  
-  def title
-    @@title
-  end
-  
-  def ministerial_title
-    @@ministerial_title
-  end
-  
-  def constituency
-    @@constituency
-  end
-  
   
   private
     def get_constituency input_string
@@ -45,13 +20,13 @@ class VoteName
         
         if close_bracket.nil?
           constituency = input_string[open_bracket+1..input_string.length]
-          input_string.gsub!("(#{constituency}")
+          input_string.gsub!("(#{constituency}","")
         elsif open_bracket < close_bracket
           constituency = input_string[open_bracket+1..close_bracket-1]
-          input_string.gsub!("(#{constituency})")
+          input_string.gsub!("(#{constituency})","")
         else
           constituency = input_string[open_bracket+1..input_string.length]
-          input_string.gsub!("(#{constituency}")
+          input_string.gsub!("(#{constituency}","")
         end
         
         input_string.strip!
@@ -121,7 +96,7 @@ class VoteName
       [title, input_string]
     end
     
-    def get_ministerial_title input_string
+    def get_parliamentary_title input_string
       parts = input_string.split(" ")
       title = ""
       

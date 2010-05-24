@@ -20,7 +20,7 @@
     %ol.ayes
       - @division["ayes"].each do |member|
         %li.member
-          %span.parly_title= member["ministerial_title"]
+          %span.parly_title= member["parliamentary_title"]
           %span.title= member["title"]
           %span.forename= member["forename"].gsub("???", '<span class="illegible_text"></span>')
           %span.surname= member["surname"].gsub("???", '<span class="illegible_text"></span>')
@@ -31,7 +31,7 @@
     %ol.noes
       - @division["noes"].each do |member|
         %li.member
-          %span.parly_title= member["ministerial_title"]
+          %span.parly_title= member["parliamentary_title"]
           %span.title= member["title"]
           %span.forename= member["forename"].gsub("???", '<span class="illegible_text"></span>')
           %span.surname= member["surname"].gsub("???", '<span class="illegible_text"></span>')

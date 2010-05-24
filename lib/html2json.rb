@@ -194,7 +194,7 @@ def load_divisions_list html_file
       ayes.xpath('./li').each do |aye|
         member_hash = {}
         vote_name = VoteName.new(aye.text.strip)
-        member_hash["ministerial_title"] = vote_name.ministerial_title
+        member_hash["parliamentary_title"] = vote_name.parliamentary_title
         member_hash["title"] = vote_name.title
         member_hash["forename"] = vote_name.forename
         member_hash["surname"] = vote_name.surname
@@ -213,7 +213,7 @@ def load_divisions_list html_file
       noes.xpath('./li').each do |noe|
         member_hash = {}
         vote_name = VoteName.new(noe.text.strip)
-        member_hash["ministerial_title"] = vote_name.ministerial_title
+        member_hash["parliamentary_title"] = vote_name.parliamentary_title
         member_hash["title"] = vote_name.title
         member_hash["forename"] = vote_name.forename
         member_hash["surname"] = vote_name.surname

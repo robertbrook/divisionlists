@@ -10,8 +10,8 @@ describe "The VoteName Parser" do
       @john_aird.forename.should == "John"  
     end
     
-    it 'should not return a ministerial_title' do
-      @john_aird.ministerial_title.should == ''
+    it 'should not return a parliamentary_title' do
+      @john_aird.parliamentary_title.should == ''
     end
     
     it 'should not return a title' do
@@ -37,8 +37,8 @@ describe "The VoteName Parser" do
       @sir_william_arrol.surname.should == "Arrol"  
     end
     
-    it "should not return a ministerial_title" do
-      @sir_william_arrol.ministerial_title.should == ""
+    it "should not return a parliamentary_title" do
+      @sir_william_arrol.parliamentary_title.should == ""
     end
     
     it "should return a title of 'Sir'" do
@@ -63,8 +63,8 @@ describe "The VoteName Parser" do
       @rt_hon_john_atkinson.title.should == ""
     end
     
-    it "should return a ministerial_title of 'Rt. Hon.'" do
-      @rt_hon_john_atkinson.ministerial_title.should == "Rt. Hon."
+    it "should return a parliamentary_title of 'Rt. Hon.'" do
+      @rt_hon_john_atkinson.parliamentary_title.should == "Rt. Hon."
     end
   end
   
@@ -85,8 +85,8 @@ describe "The VoteName Parser" do
       @rt_hon_aj_balfour_manchester.title.should == ""
     end
     
-    it "should return a ministerial_title = 'Rt. Hon." do
-      @rt_hon_aj_balfour_manchester.ministerial_title.should == "Rt. Hon."
+    it "should return a parliamentary_title = 'Rt. Hon." do
+      @rt_hon_aj_balfour_manchester.parliamentary_title.should == "Rt. Hon."
     end
     
     it "should return a constituency of 'Manchester'" do
@@ -111,8 +111,8 @@ describe "The VoteName Parser" do
       @gerald_william_balfour_leeds.title.should == ""
     end
     
-    it "should not return a ministerial_title" do
-      @gerald_william_balfour_leeds.ministerial_title.should == ""
+    it "should not return a parliamentary_title" do
+      @gerald_william_balfour_leeds.parliamentary_title.should == ""
     end
     
     it "should return a constituency of 'Leeds'" do
@@ -137,8 +137,8 @@ describe "The VoteName Parser" do
       @barry_a_h_smith.title.should == ""
     end
     
-    it "should not return a ministerial_title" do
-      @barry_a_h_smith.ministerial_title.should == ""
+    it "should not return a parliamentary_title" do
+      @barry_a_h_smith.parliamentary_title.should == ""
     end
     
     it "should return a constituency of 'Huntingdon'" do
@@ -159,8 +159,8 @@ describe "The VoteName Parser" do
       @beach_rt_hn_sir_m_h.surname.should == "Beach"
     end
     
-    it "should return a ministerial_title of 'Rt. Hon." do
-      @beach_rt_hn_sir_m_h.ministerial_title.should == "Rt. Hon."
+    it "should return a parliamentary_title of 'Rt. Hon." do
+      @beach_rt_hn_sir_m_h.parliamentary_title.should == "Rt. Hon."
     end
     
     it "should return a title of 'Sir'" do
@@ -189,8 +189,8 @@ describe "The VoteName Parser" do
       @wilson_todd_wm_h_yorks.title.should == ""
     end
     
-    it "should not return a ministerial_title" do
-      @wilson_todd_wm_h_yorks.ministerial_title.should == ""
+    it "should not return a parliamentary_title" do
+      @wilson_todd_wm_h_yorks.parliamentary_title.should == ""
     end
     
     it "should return a constituency of 'Yorkshire'" do
@@ -215,8 +215,8 @@ describe "The VoteName Parser" do
       @laurie_lieut_general.title.should == "Lieutenant General"
     end
     
-    it "should not return a ministerial_title" do
-      @laurie_lieut_general.ministerial_title.should == ""
+    it "should not return a parliamentary_title" do
+      @laurie_lieut_general.parliamentary_title.should == ""
     end
     
     it "should not return a constituency" do
@@ -241,8 +241,8 @@ describe "The VoteName Parser" do
       @welby_lieut_col_a_c_e.title.should == "Lieutenant Colonel"
     end
     
-    it "should not return a ministerial_title" do
-      @welby_lieut_col_a_c_e.ministerial_title.should == ""
+    it "should not return a parliamentary_title" do
+      @welby_lieut_col_a_c_e.parliamentary_title.should == ""
     end
     
     it "should not return a constituency" do
@@ -267,8 +267,8 @@ describe "The VoteName Parser" do
       @williams_joseph_powell_birm.title.should == ""
     end
     
-    it "should not return a ministerial_title" do
-      @williams_joseph_powell_birm.ministerial_title.should == ""
+    it "should not return a parliamentary_title" do
+      @williams_joseph_powell_birm.parliamentary_title.should == ""
     end
     
     it "should return a constituency of 'Birmingham'" do
@@ -293,8 +293,8 @@ describe "The VoteName Parser" do
       @bathurst_hon_allen_benjamin.title.should == ""
     end
     
-    it "should return a ministerial_title of 'Hon.'" do
-      @bathurst_hon_allen_benjamin.ministerial_title.should == "Hon."
+    it "should return a parliamentary_title of 'Hon.'" do
+      @bathurst_hon_allen_benjamin.parliamentary_title.should == "Hon."
     end
     
     it "should not return a constituency" do
@@ -319,8 +319,8 @@ describe "The VoteName Parser" do
       @kinloch_sir_john_geoge_smyth.title.should == "Sir"
     end
     
-    it "should not return a ministerial_title" do
-      @kinloch_sir_john_geoge_smyth.ministerial_title.should == ""
+    it "should not return a parliamentary_title" do
+      @kinloch_sir_john_geoge_smyth.parliamentary_title.should == ""
     end
     
     it "should not return a constituency" do
@@ -345,8 +345,8 @@ describe "The VoteName Parser" do
       @balfour_rt_hn_j_blair.title.should == ""
     end
     
-    it "should return a ministerial_title of 'Rt. Hon." do
-      @balfour_rt_hn_j_blair.ministerial_title.should == "Rt. Hon."
+    it "should return a parliamentary_title of 'Rt. Hon." do
+      @balfour_rt_hn_j_blair.parliamentary_title.should == "Rt. Hon."
     end
     
     it "should not return a constituency" do
@@ -371,8 +371,8 @@ describe "The VoteName Parser" do
       @wyvill_marmaduke_darcy.title.should == ""
     end
     
-    it "should not return a ministerial_title" do
-      @wyvill_marmaduke_darcy.ministerial_title.should == ""
+    it "should not return a parliamentary_title" do
+      @wyvill_marmaduke_darcy.parliamentary_title.should == ""
     end
     
     it "should not return a constituency" do
@@ -397,8 +397,8 @@ describe "The VoteName Parser" do
       @williams_joseph_powell.title.should == ""
     end
     
-    it "should not return a ministerial_title" do
-      @williams_joseph_powell.ministerial_title.should == ""
+    it "should not return a parliamentary_title" do
+      @williams_joseph_powell.parliamentary_title.should == ""
     end
     
     it "should return a constituency of 'Bi???" do

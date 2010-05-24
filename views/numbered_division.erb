@@ -8,7 +8,7 @@
   <resolution><%= @division["resolution"] %></resolution>
   <ayes><% @division["ayes"].each do |member| %>
     <member>
-      <parly_title><%= member["ministerial_title"]%></parly_title>
+      <parly_title><%= member["parliamentary_title"]%></parly_title>
       <title><%= member["title"]%></title>
       <forename><%= member["forename"].gsub("???", "<illegible_text />")%></forename>
       <surname><%= member["surname"].gsub("???", "<illegible_text />")%></surname>
@@ -17,7 +17,7 @@
   <ayes_tellers><%= @division["ayes_tellers"] %></ayes_tellers>
   <noes><% @division["noes"].each do |member|%>
     <member>
-      <parly_title><%= member["ministerial_title"]%></parly_title>
+      <parly_title><%= member["parliamentary_title"]%></parly_title>
       <title><%= member["title"]%></title>
       <forename><%= member["forename"].gsub("???", "<illegible_text />")%></forename>
       <surname><%= member["surname"].gsub("???", "<illegible_text />")%></surname>
