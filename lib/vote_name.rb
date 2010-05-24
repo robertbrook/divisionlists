@@ -18,19 +18,23 @@ class VoteName
         open_bracket = input_string.rindex("(")
         close_bracket = input_string.rindex(")")
         
-        if close_bracket.nil?
-          constituency = input_string[open_bracket+1..input_string.length]
-          input_string.gsub!("(#{constituency}","")
-        elsif open_bracket < close_bracket
-          constituency = input_string[open_bracket+1..close_bracket-1]
-          input_string.gsub!("(#{constituency})","")
-        else
-          constituency = input_string[open_bracket+1..input_string.length]
-          input_string.gsub!("(#{constituency}","")
-        end
+        if open_bracket == 0
+          constituency = ""
+        else        
+          if close_bracket.nil?
+            constituency = input_string[open_bracket+1..input_string.length]
+            input_string.gsub!("(#{constituency}","")
+          elsif open_bracket < close_bracket
+            constituency = input_string[open_bracket+1..close_bracket-1]
+            input_string.gsub!("(#{constituency})","")
+          else
+            constituency = input_string[open_bracket+1..input_string.length]
+            input_string.gsub!("(#{constituency}","")
+          end
         
-        input_string.strip!
-        constituency = expand_constituency_name(constituency)
+          input_string.strip!
+          constituency = expand_constituency_name(constituency)
+        end
       else
         constituency = ""
       end

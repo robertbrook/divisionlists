@@ -120,6 +120,58 @@ describe "The VoteName Parser" do
     end  
   end
   
+  describe "given VoteName '(Balfour ,Gerald William (Leeds)'" do
+    before do    
+      @gerald_william_balfour_leeds = VoteName.new("(Balfour ,Gerald William (Leeds)")
+    end
+  
+    it "should return a forename of 'Gerald William'" do
+      @gerald_william_balfour_leeds.forename.should == "Gerald William"
+    end
+  
+    it "should return a surname of 'Balfour'" do
+      @gerald_william_balfour_leeds.surname.should == "Balfour"  
+    end
+    
+    it "should not return a title" do
+      @gerald_william_balfour_leeds.title.should == ""
+    end
+    
+    it "should not return a parliamentary_title" do
+      @gerald_william_balfour_leeds.parliamentary_title.should == ""
+    end
+    
+    it "should return a constituency of 'Leeds'" do
+      @gerald_william_balfour_leeds.constituency.should == "Leeds"  
+    end  
+  end
+  
+  describe "given VoteName '(Balfour ,Gerald William'" do
+    before do    
+      @gerald_william_balfour = VoteName.new("(Balfour ,Gerald William")
+    end
+  
+    it "should return a forename of 'Gerald William'" do
+      @gerald_william_balfour.forename.should == "Gerald William"
+    end
+  
+    it "should return a surname of 'Balfour'" do
+      @gerald_william_balfour.surname.should == "Balfour"  
+    end
+    
+    it "should not return a title" do
+      @gerald_william_balfour.title.should == ""
+    end
+    
+    it "should not return a parliamentary_title" do
+      @gerald_william_balfour.parliamentary_title.should == ""
+    end
+    
+    it "should not return a constituency" do
+      @gerald_william_balfour.constituency.should == ""
+    end  
+  end
+  
   describe "given VoteName 'Barry, A. H. Smith- (Hunts.)'" do
     before do    
       @barry_a_h_smith = VoteName.new("Barry, A. H. Smith- (Hunts.)")
