@@ -253,7 +253,11 @@ end
 
 def load_data
   write_to_log("#{Time.now}\n")
-  Dir.glob('./../data/*/*.html').each do |html_file|
+  paths = Dir.glob('./../data/*/*.html')
+  paths += Dir.glob('./../data/*/*/*.html')
+  paths += Dir.glob('./../data/*/*/*/*.html')
+  paths += Dir.glob('./../data/*.html')
+  paths.each do |html_file|
     load_divisions_list(html_file)
   end
   write_to_log("\n")
