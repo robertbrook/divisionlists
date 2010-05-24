@@ -7,13 +7,6 @@ require 'vote_name'
 DBSERVER = "http://localhost:5984"
 DATABASE = "#{DBSERVER}/divisionlists"
 
-def get_uuid
-  # result = RestClient.get("#{DBSERVER}/_uuids")
-  # values = JSON.parse(result.body)
-  # values["uuids"].first
-  `uuidgen`.strip
-end
-
 def write_to_log message
   File.open("../dataload.log", 'a') {|f| f.write(message) }
 end
@@ -27,19 +20,19 @@ def get_month_num month_name
   case month_name.downcase
     when "january", "ianuarius"
       "01"
-    when "february", "februarius"
+    when "february", "februarii", "februarius"
       "02"
     when "march", "martii", "martius"
       "03"
     when "april", "aprilis"
       "04"
-    when "may", "maius"
+    when "may", "maii", "maius"
       "05"
-    when "june", "iunius"
+    when "june", "junii", "iunius"
       "06"
-    when "july", "julius"
+    when "july", "julii", "julius"
       "07"
-    when "august", "sextilis"
+    when "august", "augusti", "sextilis"
       "08"
     when "september"
       "09"
@@ -197,8 +190,10 @@ def load_divisions_list html_file
       if noes_first
         division_hash["noes_tellers"] =  noes_first.next_sibling().text
       end
-    
-      uuid = get_uuid()
+      
+      #use the filename (minus the extension) plus the division number as the document id
+      uuid = "#{html_file.gsub('.html','')}-#{number.text.gsub('Numb','')}"
+      uuid = uuid.gsub('.','').gsub(' ','').gsub(',','').gsub('data/', '').gsub('/','')
 
       #convert the hash into a valid JSON doc
       doc = <<-JSON
