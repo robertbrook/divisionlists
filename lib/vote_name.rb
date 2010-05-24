@@ -40,11 +40,22 @@ class VoteName
   private
     def get_constituency input_string
       if input_string =~ /\(([^\)]*)\)*/
-        constituency = $1
-        input_string.gsub!(/\(([^\)]*)\)*/, "")
+        open_bracket = input_string.rindex("(")
+        close_bracket = input_string.rindex(")")
+        
+        if close_bracket.nil?
+          constituency = input_string[open_bracket+1..input_string.length]
+          input_string.gsub!("(#{constituency}")
+        elsif open_bracket < close_bracket
+          constituency = input_string[open_bracket+1..close_bracket-1]
+          input_string.gsub!("(#{constituency})")
+        else
+          constituency = input_string[open_bracket+1..input_string.length]
+          input_string.gsub!("(#{constituency}")
+        end
+        
         input_string.strip!
         constituency = expand_constituency_name(constituency)
-        
       else
         constituency = ""
       end
@@ -52,10 +63,10 @@ class VoteName
       [constituency, input_string]
     end
     
-    def get_surname input_string
+    def get_surname input_string      
       input_string = even_out_spacing(input_string)
 
-      parts = input_string.split(",").reverse
+      parts = input_string.split(",").reverse      
       surname = parts.pop.strip
 
       input_string = parts.reverse.join(",")

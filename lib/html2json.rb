@@ -138,15 +138,52 @@ def load_divisions_list html_file
       division_hash["page"] = page.text
       division_hash["date"] = date.text
       
-      date_parts = date.text.split(", ")
+      date_parts = date.text.split(",")
       
       year = date_parts.pop.gsub(".", "").strip
       
-      month_day = date_parts.pop.split(" ")
-      month = month_day.pop
-      month = get_month_num(month)
-      
-      day = month_day.last.match(/\d+/).to_s
+      if year.length == 4    
+        month_day = date_parts.pop.split(" ")
+        month = month_day.pop.strip
+        month = get_month_num(month)
+            
+        day = month_day.last.match(/\d+/).to_s
+      else
+        date_text = date.text
+        
+        #English date
+        if date_text =~ /([^\s]+day)/
+          text_day = $1
+          date_text.gsub!(text_day, "")
+          
+          year = date_text.match(/\d{4}/).to_s
+          date_text.gsub!(year, "")
+          date_text = date_text.gsub(",","").gsub(".","").strip
+
+          month_day = date_text.split(" ")
+          month = month_day.pop.strip
+          month = get_month_num(month)
+
+          day = month_day.last.match(/\d+/).to_s
+          
+          #Latin date
+        elsif date_text =~ /(die [A-Za-z]*)/
+          month = $1.gsub("die", "").strip
+          month = get_month_num(month)
+          date_text.gsub!($1, "")
+          
+          escaped_chars = date_text.scan(/&[^;]*;/)
+          escaped_chars.each do |escaped_char|
+            date_text.gsub!(escaped_char.to_s,"")
+          end
+          
+          year = date_text.match(/\d{4}/).to_s
+          date_text.gsub!(year, "")
+          date_text = date_text.gsub(",","").gsub(".","").strip
+          
+          day = date_text.match(/\d+/).to_s
+        end
+      end
 
       division_hash["numeric_date"] = [year, month, day]
       
@@ -188,11 +225,14 @@ def load_divisions_list html_file
 
       noes_first = noes.first
       if noes_first
-        division_hash["noes_tellers"] =  noes_first.next_sibling().text
+        if noes_first.next_sibling()
+          division_hash["noes_tellers"] =  noes_first.next_sibling().text
+        end
       end
       
       #use the filename (minus the extension) plus the division number as the document id
-      uuid = "#{html_file.gsub('.html','')}-#{number.text.gsub('Numb','')}"
+            
+      uuid = "#{html_file[html_file.rindex('/')+1..html_file.length].gsub('.html','')}-#{number.text.gsub('Numb','')}"
       uuid = uuid.gsub('.','').gsub(' ','').gsub(',','').gsub('data/', '').gsub('/','')
 
       #convert the hash into a valid JSON doc
@@ -200,15 +240,20 @@ def load_divisions_list html_file
       #{JSON.generate(division_hash)}
       JSON
 
-      #PUT the new record to the database
-      RestClient.put("#{DATABASE}/#{uuid}", doc)
+
+      begin
+        #PUT the new record to the database
+        RestClient.put("#{DATABASE}/#{uuid}", doc)
+      rescue RestClient::Conflict
+        #duplicate record, ignore
+      end
     end
   end
 end
 
 def load_data
   write_to_log("#{Time.now}\n")
-  Dir.glob('./../data/*.html').each do |html_file|
+  Dir.glob('./../data/*/*.html').each do |html_file|
     load_divisions_list(html_file)
   end
   write_to_log("\n")
