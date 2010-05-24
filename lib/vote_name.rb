@@ -89,6 +89,12 @@ class VoteName
         when /(Captain)/, /(Capt\.)/
           title = "Captain"
           input_string.gsub!($1, "")
+        when /(Mr\. Serjeant)/
+          title = "Mr. Serjeant"
+          input_string.gsub!($1, "")
+        when /(Mr\. Alderman)/
+          title = "Mr. Alderman"
+          input_string.gsub!($1, "")
         when /(Dr\.)/, /(Doctor)/
           title = "Doctor"
           input_string.gsub!($1, "")

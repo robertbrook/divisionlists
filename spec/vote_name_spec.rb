@@ -172,6 +172,42 @@ describe "The VoteName Parser" do
     end  
   end
   
+  describe "given VoteName 'Wilde, Mr. Serjeant'" do
+    before do    
+      @serjeant_wilde = VoteName.new("Wilde, Mr. Serjeant")
+    end
+    
+    it "should not return a forename" do
+      @serjeant_wilde.forename.should == ""
+    end
+    
+    it "should return a surname of 'Wilde'" do
+      @serjeant_wilde.surname.should == "Wilde"
+    end
+    
+    it "should return a title of 'Mr. Serjeant" do
+      @serjeant_wilde.title.should == "Mr. Serjeant"
+    end
+  end
+  
+  describe "given VoteName 'Copeland, Mr. Alderman'" do
+    before do    
+      @alderman_copeland = VoteName.new("Copeland, Mr. Alderman")
+    end
+    
+    it "should not return a forename" do
+      @alderman_copeland.forename.should == ""
+    end
+    
+    it "should return a surname of 'Copeland'" do
+      @alderman_copeland.surname.should == "Copeland"
+    end
+    
+    it "should return a title of 'Mr. Alderman" do
+      @alderman_copeland.title.should == "Mr. Alderman"
+    end
+  end
+  
   describe "given VoteName 'Barry, A. H. Smith- (Hunts.)'" do
     before do    
       @barry_a_h_smith = VoteName.new("Barry, A. H. Smith- (Hunts.)")
