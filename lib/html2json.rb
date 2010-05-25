@@ -3,17 +3,22 @@ require 'nokogiri'
 require 'json'
 require 'rest_client'
 require 'vote_name'
+require 'logger'
+
+@log = Logger.new(STDOUT)
 
 DBSERVER = "http://localhost:5984"
 DATABASE = "#{DBSERVER}/divisionlists"
 
 def write_to_log message
   File.open("../dataload.log", 'a') {|f| f.write(message) }
+  @log.info("writing dataload.log file")
 end
 
 def log_error current_file, ref, item_name, item
   message = "error in file #{current_file}#{ref} - #{item_name} count was #{item.count}, expected 1\n"
   write_to_log(message)  
+  @log.info(message)
 end
 
 def get_month_num month_name
@@ -47,7 +52,8 @@ end
 
 def load_divisions_list html_file
   nokogiri_doc = Nokogiri::HTML(open(html_file))
-  
+
+  @log.info("opening file: " + html_file)
   nokogiri_doc.xpath('//div[@class="division-list"]').each do |division_list|
     error_occured = false
     
@@ -242,9 +248,11 @@ def load_divisions_list html_file
 
 
       begin
+        @log.info("putting " + doc)
         #PUT the new record to the database
         RestClient.put("#{DATABASE}/#{uuid}", doc)
       rescue RestClient::Conflict
+        @log.info("got a duplicate!")
         #duplicate record, ignore
       end
     end
