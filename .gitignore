@@ -1,5 +1,5 @@
 output/
 dataload.log
-*.*~
+*~
 couchdb.std*
 .DS_Store
