@@ -18,7 +18,7 @@ get '/' do
 end
 
 get '/divisions/number/:numberkey.xml' do
-  data = RestClient.get "#{settings.db}/_design/divisions/_view/by_number?key=%22#{params[:numberkey]}%22"
+  data = RestClient.get "#{settings.db}/_design/data/_view/divisions-by-number?key=%22#{params[:numberkey]}%22"
   result = JSON.parse(data.body)
   @division = result["rows"].first["value"]
   
@@ -38,7 +38,7 @@ get '/divisions' do
 end
 
 get '/divisions/number/:numberkey' do
-  data = RestClient.get "#{settings.db}/_design/divisions/_view/by_number?key=%22#{params[:numberkey]}%22"
+  data = RestClient.get "#{settings.db}/_design/data/_view/divisions-by-number?key=%22#{params[:numberkey]}%22"
   result = JSON.parse(data.body)
   
   @division = result["rows"][0]["value"]
@@ -65,19 +65,19 @@ get '/search' do
   @term = Rack::Utils.escape_html(params[:q])
   
   #search constituencies
-  data = RestClient.get "#{settings.db}/_design/index/_view/constituency?key=%22#{term}%22"
+  data = RestClient.get "#{settings.db}/_design/data/_view/idx-constituency?key=%22#{term}%22"
   result = JSON.parse(data.body)
   
   @divisions = result["rows"]
   
   #search members
-  data = RestClient.get "#{settings.db}/_design/index/_view/member_name?key=%22#{term}%22"
+  data = RestClient.get "#{settings.db}/_design/data/_view/idx-member-name?key=%22#{term}%22"
   result = JSON.parse(data.body)
   
   @members = result["rows"]
   
   #search resolution text
-  data = RestClient.get "#{settings.db}/_design/index/_view/resolution?key=%22#{term}%22"
+  data = RestClient.get "#{settings.db}/_design/data/_view/idx-resolution?key=%22#{term}%22"
   result = JSON.parse(data.body)
   
   @resolutions = result["rows"]
