@@ -28,7 +28,7 @@ CouchApp is a great way to package up the inner workings of your CouchDB - views
 
 The search engine bit. Reasonably painful to set up, but worth the effort.
 
-1. Install Maven 2 if you don't already have it (good new fellow Mac-heads, nothing to do here). [Everyone else you need to go over here](http://maven.apache.org/download.html)
+1. Install Maven 2 if you don't already have it (good news fellow Mac-heads, nothing to do here). [Everyone else you need to go over here](http://maven.apache.org/download.html)
 2. Grab the couchdb-lucene code from the [github repository](http://github.com/rnewson/couchdb-lucene) (hit the download source button over in the top right)
 3. Unpack the couchdb-lucene code, open up a Terminal/iTerm/Command prompt window and navigate to the right directory
 4. Type <code>mvn</code>
