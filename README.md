@@ -77,4 +77,6 @@ http://localhost:5984/divisionlists/_fti/_design/data/test?q=title:Lord
 http://localhost:5984/divisionlists/_fti/_design/data/test?q=surname:Christie
 
 http://localhost:5984/divisionlists/_fti/_design/data/test?q=forename:David
+
+http://localhost:5984/divisionlists/_fti/_design/data/test?q=forename:%22Winston%20Spencer%22
 </code></pre>
