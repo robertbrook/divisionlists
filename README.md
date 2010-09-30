@@ -67,12 +67,14 @@ The search engine bit. Reasonably painful to set up, but worth the effort.
 
 The lucene search isn't properly hooked into the app (yet), but in the meantime you can test it out by running some queries over HTTP
 
-<code>http://localhost:5984/divisionlists/_fti/_design/data/test?q=Roman</code>
+<pre><code>
+http://localhost:5984/divisionlists/_fti/_design/data/test?q=Roman
 
-<code>http://localhost:5984/divisionlists/_fti/_design/data/test?q=constituency:Essex</code>
+http://localhost:5984/divisionlists/_fti/_design/data/test?q=constituency:Essex
 
-<code>http://localhost:5984/divisionlists/_fti/_design/data/test?q=title:Lord</code>
+http://localhost:5984/divisionlists/_fti/_design/data/test?q=title:Lord
 
-<code>http://localhost:5984/divisionlists/_fti/_design/data/test?q=surname:Christie</code>
+http://localhost:5984/divisionlists/_fti/_design/data/test?q=surname:Christie
 
-<code>http://localhost:5984/divisionlists/_fti/_design/data/test?q=forename:David</code>
+http://localhost:5984/divisionlists/_fti/_design/data/test?q=forename:David
+</code></pre>
