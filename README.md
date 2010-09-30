@@ -47,7 +47,7 @@ The search engine bit. Reasonably painful to set up, but worth the effort.
     </pre></code>
 10. Under [couchdb] change os_process_timeout as follows:
      <pre><code>os_process_timeout=60000 ; increase the timeout from 5 seconds.</code></pre>
-11. Restart CouchDB
+11. Save the ini file and restart CouchDB
 
 ### Setting up the app
 
