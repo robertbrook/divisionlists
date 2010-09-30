@@ -18,7 +18,7 @@ To get this to work, you're going to need CouchDB, couchdb-lucene and couchapp. 
 
 #### CouchDB
 
-If you're on a Mac, [CouchDBX](http://www.couchio.com/get#mac "CouchDBX") is your best bet (or if you really must tinker, [try this at your own risk](http://lizconlan.github.com/sandbox/couchdb-on-macosx.html))
+If you're on a Mac, [CouchDBX](http://www.couchio.com/get#mac "CouchDBX") is your best bet (or if you really must tinker, [try this at your own risk](http://lizconlan.github.com/sandbox/couchdb-on-macosx.html)); otherwise the nice folk over at [CouchOne](http://www.couchio.com/get) should have something for you
 
 #### CouchApp
 
