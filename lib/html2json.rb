@@ -47,9 +47,14 @@ class Html2Json
         error_ref = ""
     
         unless do_error_check(page, date, number, resolution, ayes, noes, current_file)
+          #use the filename (minus the extension) plus the division number as the document id
+          uuid = "#{html_file[html_file.rindex('/')+1..html_file.length].gsub('.html','')}-#{number.text.gsub('Numb','')}"
+          uuid = uuid.gsub('.','').gsub(' ','').gsub(',','').gsub('data/', '').gsub('/','')
+          
           division_hash["page"] = page.text
           division_hash["date"] = date.text
       
+          #construct the date values
           escaped_text = HTMLEntities.new.encode(date.text)
           escaped_text.gsub!("\302\260", "")
       
@@ -69,6 +74,11 @@ class Html2Json
           month = get_month_num(month)
           
           day = month_day.join(" ").match(/\d+/).to_s
+          if day.to_i == 0
+            #data may be missing, imply it from the uuid
+            parts = uuid.split("-")
+            day = parts[2]
+          end
 
           division_hash["numeric_date"] = [year.to_i, month, day.to_i]
       
@@ -114,11 +124,6 @@ class Html2Json
               division_hash["noes_tellers"] =  noes_first.next_sibling().text
             end
           end
-      
-          #use the filename (minus the extension) plus the division number as the document id
-            
-          uuid = "#{html_file[html_file.rindex('/')+1..html_file.length].gsub('.html','')}-#{number.text.gsub('Numb','')}"
-          uuid = uuid.gsub('.','').gsub(' ','').gsub(',','').gsub('data/', '').gsub('/','')
 
           #convert the hash into a valid JSON doc
           doc = <<-JSON
