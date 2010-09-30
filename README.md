@@ -37,16 +37,16 @@ The search engine bit. Reasonably painful to set up, but worth the effort.
 7. Rename the resulting folder <code>couchdb-lucene</code> and move it to where you want your couchdb-lucene app to live (I've put mine in <code>/usr/local</code>)
 8. Locate your CouchDB <code>local.ini</code> file 
 (if you're using CouchDBX you need to right-click on CouchDBX in your Applications folder and select "Show Package Contents", from there it's in Contents / Resources / couchdbx-core / couchdb_VERSION / etc / couchdb)
-9. Hack in the following: 
-<code>
-  [external]
-  fti=/path/to/python /path/to/couchdb-lucene/tools/couchdb-external-hook.py
-
-  [httpd_db_handlers]
-  _fti = {couch_httpd_external, handle_external_req, <<"fti">>}
-</code>
+9. Hack in the following:
+    <pre><code>
+    [external]
+    fti=/path/to/python /path/to/couchdb-lucene/tools/couchdb-external-hook.py
+        
+    [httpd_db_handlers]
+    _fti = {couch_httpd_external, handle_external_req, <<"fti">>}
+    </pre></code>
 10. Under [couchdb] change os_process_timeout as follows:
-  <code>os_process_timeout=60000 ; increase the timeout from 5 seconds.</code>
+     <pre><code>os_process_timeout=60000 ; increase the timeout from 5 seconds.</code></pre>
 11. Restart CouchDB
 
 ### Setting up the app
