@@ -32,7 +32,7 @@ The search engine bit. Reasonably painful to set up, but worth the effort.
 2. Grab the couchdb-lucene code from the [github repository](http://github.com/rnewson/couchdb-lucene) (hit the download source button over in the top right)
 3. Unpack the couchdb-lucene code, open up a Terminal/iTerm/Command prompt window and navigate to the right directory
 4. Type <code>mvn</code>
-5. Make some tea
+5. Make some tea, this could take a while
 6. Navigate to the <code>target</code> subfolder and unpack the zip file you find in there
 7. Rename the resulting folder <code>couchdb-lucene</code> and move it to where you want your couchdb-lucene app to live (I've put mine in <code>/usr/local</code>)
 8. Locate your CouchDB <code>local.ini</code> file 
@@ -65,7 +65,7 @@ The search engine bit. Reasonably painful to set up, but worth the effort.
 
 ## A few examples
 
-The lucene search isn't properly hooked into the app (yet), but in the meantime you can test it out by running some queries over HTTP
+The lucene search isn't properly hooked into the app (yet), but in the meantime you can play with it by running some queries over HTTP
 
 <pre><code>
 http://localhost:5984/divisionlists/_fti/_design/data/test?q=Roman
