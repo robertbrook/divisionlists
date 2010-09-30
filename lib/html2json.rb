@@ -56,6 +56,13 @@ class Html2Json
           date_parts = escaped_text.split(",")
       
           year = date_parts.pop.gsub(".", "").strip
+          
+          unless year.length == 4
+            #something's wrong here!
+            parts = year.split(" ")
+            year = parts.pop.gsub(".", "").strip
+            date_parts << parts.join(" ")
+          end
       
           month_day = date_parts.pop.split(" ")
           month = month_day.pop.strip
