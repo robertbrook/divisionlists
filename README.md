@@ -65,7 +65,7 @@ The search engine bit. Reasonably painful to set up, but worth the effort.
 
 ## A few examples
 
-The lucene search isn't properly hooked into the app (yet), but in the meantime you can test out the lucene search by running some test queries over HTTP
+The lucene search isn't properly hooked into the app (yet), but in the meantime you can test it out by running some queries over HTTP
 
 <code>http://localhost:5984/divisionlists/_fti/_design/data/test?q=Roman</code>
 
