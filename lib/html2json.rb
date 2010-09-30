@@ -72,6 +72,11 @@ class Html2Json
           month_day = date_parts.pop.split(" ")
           month = month_day.pop.strip
           month = get_month_num(month)
+          if month.nil?
+            #data may be missing, imply it from the uuid
+            parts = uuid.split("-")
+            month = parts[1].to_i
+          end
           
           day = month_day.join(" ").match(/\d+/).to_s
           if day.to_i == 0
