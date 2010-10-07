@@ -65,7 +65,7 @@ get '/search' do
   @term = Rack::Utils.escape_html(params[:q])
   
   #search
-  data = RestClient.get "#{settings.db}/_fti/_design/data/test?q=%22#{term}%22"
+  data = RestClient.get "#{settings.db}/_fti/_design/data/test?q=#{term}"
   result = JSON.parse(data.body)
   
   @divisions = result["rows"]
