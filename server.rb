@@ -17,8 +17,16 @@ get '/' do
   haml :index
 end
 
-get '/divisions' do
+get '/divisions/?' do
   haml :divisions
+end
+
+get '/divisions/:year/?' do
+  data = RestClient.get "#{settings.db}/_design/data/_view/divisions-by-year?key=#{params[:year]}"
+  result = JSON.parse(data.body)
+  @divisions = result["rows"]
+  @title = params[:year]
+  haml :year
 end
 
 get '/divisions/:year/:numberkey.xml' do
@@ -37,7 +45,7 @@ end
 get '/divisions/:year/:numberkey.csv' do
 end
 
-get '/divisions/:year/:numberkey' do
+get '/divisions/:year/:numberkey/?' do
   data = RestClient.get "#{settings.db}/_design/data/_view/divisions-by-year-and-number?key=%22#{params[:year]}-#{params[:numberkey]}%22"
   result = JSON.parse(data.body)
   
@@ -57,7 +65,7 @@ get '/styles.css' do
   sass :styles
 end
 
-get '/search' do
+get '/search/?' do
   @title = "Search"
   
   term = CGI.escape(params[:q].downcase)

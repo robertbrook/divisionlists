@@ -1,0 +1,7 @@
+%h3
+  Divisions in the year #{params[:year]}
+  
+%ul
+  - @divisions.each do |division|
+    %li
+      %a{:href => "/divisions/#{params[:year]}/#{division['value']['number'].gsub(/[^\d*]/,"")}"} Division #{division['value']['number']}
