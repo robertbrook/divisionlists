@@ -1,4 +1,3 @@
-
 - if @divisions.empty?
   %h2 We couldn't find anything
   = "Sorry! We couldn't find any divisions lists when searching for <em>" +  @term + "</em>."
@@ -7,8 +6,9 @@
   %p= "You searched for <em>" + @term + "</em>. " + @divisions.length.to_s + " division lists contain that text:"
   %ol.search-results
     - @divisions.each do |division|
-      - divnum = division["value"]["number"]
+      - divnum = division["fields"]["number"]
+      - divyear = division["fields"]["year"]
       %li
-        %a{ :href => "/divisions/number/#{divnum}" }= "Division #{divnum}"
+        %a{ :href => "/divisions/#{divyear}/number/#{divnum}" }= "Division #{divnum}, #{divyear}"
         
     

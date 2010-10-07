@@ -17,7 +17,7 @@ get '/' do
   haml :index
 end
 
-get '/divisions/number/:numberkey.xml' do
+get '/divisions/:year/number/:numberkey.xml' do
   data = RestClient.get "#{settings.db}/_design/data/_view/divisions-by-number?key=%22#{params[:numberkey]}%22"
   result = JSON.parse(data.body)
   @division = result["rows"].first["value"]
@@ -30,15 +30,15 @@ get '/divisions/number/:numberkey.xml' do
   erb :numbered_division, :format => :xml, :layout => false
 end
 
-get '/divisions/number/:numberkey.csv' do
+get '/divisions/:year/number/:numberkey.csv' do
 end
 
 get '/divisions' do
   haml :divisions
 end
 
-get '/divisions/number/:numberkey' do
-  data = RestClient.get "#{settings.db}/_design/data/_view/divisions-by-number?key=%22#{params[:numberkey]}%22"
+get '/divisions/:year/number/:numberkey' do
+  data = RestClient.get "#{settings.db}/_design/data/_view/divisions-by-year-and-number?key=%22#{params[:year]}-#{params[:numberkey]}%22"
   result = JSON.parse(data.body)
   
   @division = result["rows"][0]["value"]
@@ -64,26 +64,11 @@ get '/search' do
   
   @term = Rack::Utils.escape_html(params[:q])
   
-  #search constituencies
-  data = RestClient.get "#{settings.db}/_design/data/_view/idx-constituency?key=%22#{term}%22"
+  #search
+  data = RestClient.get "#{settings.db}/_fti/_design/data/test?q=%22#{term}%22"
   result = JSON.parse(data.body)
   
   @divisions = result["rows"]
-  
-  #search members
-  data = RestClient.get "#{settings.db}/_design/data/_view/idx-member-name?key=%22#{term}%22"
-  result = JSON.parse(data.body)
-  
-  @members = result["rows"]
-  
-  #search resolution text
-  data = RestClient.get "#{settings.db}/_design/data/_view/idx-resolution?key=%22#{term}%22"
-  result = JSON.parse(data.body)
-  
-  @resolutions = result["rows"]
-  
-  #cheat for the demo ;)
-  @divisions = @divisions.concat(@members).concat(@resolutions)
   
   haml :search
 end
