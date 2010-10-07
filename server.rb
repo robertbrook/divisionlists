@@ -68,7 +68,7 @@ end
 get '/search/?' do
   @title = "Search"
   
-  term = CGI.escape(params[:q].downcase)
+  term = CGI.escape(params[:q])
   
   @term = Rack::Utils.escape_html(params[:q])
   
