@@ -12,18 +12,21 @@ function(doc) {
     rec = doc['ayes'][i];
     //constituency
     if (rec.constituency && rec.constituency != "") {
-      ret.add(rec.constituency)
+      ret.add(rec.constituency);
       ret.add(rec.constituency, {"field":"constituency"});
     }
+    
+    var surname = "";
     //surname
     if (rec.surname && rec.surname != "") {
-      ret.add(rec.surname)
-      ret.add(rec.surname, {"field":"surname"});
+      var surname = rec.surname;
     }
     //forename
     if (rec.forename && rec.forename != "") {
-      ret.add(rec.forename)
-      ret.add(rec.forename, {"field":"forename"});
+      ret.add(rec.forename + " " + surname);
+      ret.add(rec.forename + " " + surname, {"field":"name"});
+    } else {
+      ret.add(surname, {"field":"name"});
     }
     //title
     if (rec.title && rec.title != "") {
@@ -40,19 +43,21 @@ function(doc) {
       ret.add(rec.constituency)
       ret.add(rec.constituency, {"field":"constituency"});
     }
+    var surname = "";
     //surname
     if (rec.surname && rec.surname != "") {
-      ret.add(rec.surname)
-      ret.add(rec.surname, {"field":"surname"});
+      surname = rec.surname;
     }
     //forename
     if (rec.forename && rec.forename != "") {
-      ret.add(rec.forename)
-      ret.add(rec.forename, {"field":"forename"});
+      ret.add(rec.forename + " " + surname);
+      ret.add(rec.forename + " " + surname, {"field":"name"});
+    } else {
+      ret.add(surname, {"field":"name"});
     }
     //title
     if (rec.title && rec.title != "") {
-      ret.add(rec.title)
+      ret.add(rec.title);
       ret.add(rec.title, {"field":"title"});
     }
   }

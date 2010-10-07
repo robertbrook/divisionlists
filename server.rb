@@ -17,7 +17,11 @@ get '/' do
   haml :index
 end
 
-get '/divisions/:year/number/:numberkey.xml' do
+get '/divisions' do
+  haml :divisions
+end
+
+get '/divisions/:year/:numberkey.xml' do
   data = RestClient.get "#{settings.db}/_design/data/_view/divisions-by-number?key=%22#{params[:numberkey]}%22"
   result = JSON.parse(data.body)
   @division = result["rows"].first["value"]
@@ -30,14 +34,10 @@ get '/divisions/:year/number/:numberkey.xml' do
   erb :numbered_division, :format => :xml, :layout => false
 end
 
-get '/divisions/:year/number/:numberkey.csv' do
+get '/divisions/:year/:numberkey.csv' do
 end
 
-get '/divisions' do
-  haml :divisions
-end
-
-get '/divisions/:year/number/:numberkey' do
+get '/divisions/:year/:numberkey' do
   data = RestClient.get "#{settings.db}/_design/data/_view/divisions-by-year-and-number?key=%22#{params[:year]}-#{params[:numberkey]}%22"
   result = JSON.parse(data.body)
   
@@ -65,7 +65,7 @@ get '/search' do
   @term = Rack::Utils.escape_html(params[:q])
   
   #search
-  data = RestClient.get "#{settings.db}/_fti/_design/data/test?q=#{term}"
+  data = RestClient.get "#{settings.db}/_fti/_design/data/main?q=#{term}"
   result = JSON.parse(data.body)
   
   @divisions = result["rows"]
