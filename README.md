@@ -79,4 +79,8 @@ http://localhost:5984/divisionlists/_fti/_design/data/main?q=name:Christie
 http://localhost:5984/divisionlists/_fti/_design/data/main?q=name:David
 
 http://localhost:5984/divisionlists/_fti/_design/data/main?q=name:%22Winston%20Spencer%20Churchill%22
+
+http://localhost:5984/divisionlists/_fti/_design/data/main?q=aye:%22winston%20spencer%20churchill%22
+
+http://localhost:5984/divisionlists/_fti/_design/data/main?q=noe:%22winston%20spencer%20churchill%22
 </code></pre>

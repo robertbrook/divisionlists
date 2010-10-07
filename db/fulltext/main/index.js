@@ -25,8 +25,10 @@ function(doc) {
     if (rec.forename && rec.forename != "") {
       ret.add(rec.forename + " " + surname);
       ret.add(rec.forename + " " + surname, {"field":"name"});
+      ret.add(rec.forename + " " + surname, {"field": "aye"});
     } else {
       ret.add(surname, {"field":"name"});
+      ret.add(surname, {"field":"aye"});
     }
     //title
     if (rec.title && rec.title != "") {
@@ -52,8 +54,10 @@ function(doc) {
     if (rec.forename && rec.forename != "") {
       ret.add(rec.forename + " " + surname);
       ret.add(rec.forename + " " + surname, {"field":"name"});
+      ret.add(rec.forename + " " + surname, {"field":"noe"});
     } else {
       ret.add(surname, {"field":"name"});
+      ret.add(surname, {"field":"noe"});
     }
     //title
     if (rec.title && rec.title != "") {
