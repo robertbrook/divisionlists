@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'nokogiri'
 require 'json'
 require 'rest_client'
@@ -10,15 +9,21 @@ class Html2Json
   DBSERVER = "http://localhost:5984"
   DATABASE = "#{DBSERVER}/divisionlists"
 
-  def load_data
+  def load_data files=nil
     @log = Logger.new(STDOUT)
     write_to_log("#{Time.now}\n")
-    paths = Dir.glob("#{File.dirname(__FILE__)}/./../data/*/*.html")
-    paths += Dir.glob("#{File.dirname(__FILE__)}/./../data/*/*/*.html")
-    paths += Dir.glob("#{File.dirname(__FILE__)}/./../data/*/*/*/*.html")
-    paths += Dir.glob("#{File.dirname(__FILE__)}/./../data/*.html")
-    paths.each do |html_file|
-      load_divisions_list(html_file)
+    unless files
+      paths = Dir.glob("#{File.dirname(__FILE__)}/./../data/*/*.html")
+      paths += Dir.glob("#{File.dirname(__FILE__)}/./../data/*/*/*.html")
+      paths += Dir.glob("#{File.dirname(__FILE__)}/./../data/*/*/*/*.html")
+      paths += Dir.glob("#{File.dirname(__FILE__)}/./../data/*.html")
+      paths.each do |html_file|
+        load_divisions_list(html_file)
+      end
+    else
+      files.each do |html_file|
+        load_divisions_list(html_file)
+      end
     end
     write_to_log("\n")
   end
