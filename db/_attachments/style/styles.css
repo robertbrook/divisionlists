@@ -1,0 +1,74 @@
+body {
+  margin: 2em auto;
+  width: 550px;
+  font-family: 'IM Fell DW Pica', Georgia, serif;
+  font-size: 1.3em;
+}
+
+header, footer, nav, section, aside {
+  display: block
+}
+
+ol.search-results li {
+  list-style-type: none
+}
+
+nav li {
+  display: inline;
+  list-style-type: none;
+  padding-right: 1em
+}
+
+a {
+  text-decoration: none
+}
+  
+a:hover {
+  text-decoration: underline
+}
+
+#search {
+  font-size: 1.8em;
+  line-height: normal;
+  font-weight: bold
+}
+  
+#search input[type=text] {
+  font-size: 1em;
+  padding: 1px;
+  font-style: monospace
+}
+
+#search input[type=submit] {
+ font-size: 1em;
+ background-color: white
+}
+
+.search_term {
+  font-weight: bold
+}
+
+blockquote {
+  margin: 0
+}
+
+ul, ol {
+  padding: 0 0 0 1.4em;
+}
+
+#division #ayes, #division #noes {
+  margin: 0.5em
+}
+    
+#division #ayes ol, #division #noes ol {
+  margin: 0.25em 2em
+}
+
+#division .tellers {
+  font-weight: bold;
+  margin: 0.5em 0 1em 0
+}
+
+#division #options {
+  margin: 1em 0
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }} (Division Lists)</title>
+    <link rel="stylesheet" href="../../style/styles.css" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=IM+Fell+DW+Pica:regular,italic' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <header>
+      <nav>
+        Division Lists 1804&mdash;1987
+      </nav>
+    </header>
+    <section>
+      <div id="division">
+        <h2>Division {{ number }}</h2>
+
+        <p>
+          Read Hansard for &mdash;
+          <a href="{{ archive_link }}" title="Hansard archive for {{ date }}">{{ date }}</a>
+        </p>
+
+        <div style="font-style:italic;float:right;display:block;">[Page {{ page }}]</div>
+
+        <blockquote>{{ resolution }}</blockquote>
+        
+        Votes cast: {{ votes_cast }}
+        
+        <div id="ayes">
+          Ayes: {{ ayes_count }} ({{ ayes_percent }}%)
+          <ol>
+            {{#ayes}}
+              <li class="member">
+                <span class="parly_title">{{ parly_title }}</span>
+                <span class="title">{{ title }}</span>
+                <span class="forename">{{ forename }}</span>
+                <span class="surname">{{ surname }}</span>
+              </li>
+            {{/ayes}}
+          </ol>
+          <div class="tellers">{{ ayes_tellers }}</div>
+        </div>
+        
+        <div id="noes">
+          Noes: {{ noes_count }} ({{ noes_percent }}%)
+          <ol>
+            {{#noes}}
+              <li class="member">
+                <span class="parly_title">{{ parly_title }}</span>
+                <span class="title">{{ title }}</span>
+                <span class="forename">{{ forename }}</span>
+                <span class="surname">{{ surname }}</span>
+              </li>
+            {{/noes}}
+          </ol>
+          <div class="tellers">{{ noes_tellers }}</div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
